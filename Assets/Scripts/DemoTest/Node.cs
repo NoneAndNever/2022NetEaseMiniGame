@@ -12,22 +12,24 @@ public class Node
         Four,
         Eight
     }
-    
-    public Vector3 position { get; }
-    private bool isBlocked { get; set; }
-    public List<Node> FourNeighbors = new List<Node>(4);
-    public List<Node> EightNeighbors = new List<Node>(8);
-
-    public Node Connection { get; set; }
+    public readonly int x;
+    public readonly int y;
+    public readonly Vector2 position;
+    private bool isBlocked;
+    private readonly List<Node> fourNeighbors = new List<Node>(4);
+    private readonly List<Node> eightNeighbors = new List<Node>(8);
+    public Node Connection;
     //起点到当前点所需的步数
-    public int G { get; set; }
+    public int G;
     //当前点到终点的最短步数
-    public int H { get; set; }
+    public int H;
     public int F => G + H;
     
-    public Node(Vector3 vector3)
+    public Node(int x,int y)
     {
-        position = vector3;
+        this.x = x;
+        this.y = y;
+        this.position = new Vector3(x, y);
         CheckObstacle();
     }
 
@@ -36,28 +38,27 @@ public class Node
     /// </summary>
     /// <param name="node">邻居节点</param>
     /// <param name="direction">节点联通方向</param>
-    public void SetNeighber(Node node, Direction direction)
+    public void SetNeighbor(Node node, Direction direction)
     {
+        if (isBlocked|| node.isBlocked) return;
         if (direction == Direction.Four)
         {
-            FourNeighbors.Add(node);
-            node.FourNeighbors.Add(this);
+            fourNeighbors.Add(node);
+            node.fourNeighbors.Add(this);
         }
         else
         {
-            EightNeighbors.Add(node);
-            node.EightNeighbors.Add(this);
+            eightNeighbors.Add(node);
+            node.eightNeighbors.Add(this);
         }
     }
 
     /// <summary>
     /// 检测该节点是否被阻挡
     /// </summary>
-    public void CheckObstacle()
+    private void CheckObstacle()
     {
-        Vector3 orign = position - Vector3.back;
-        if (Physics2D.Raycast(position, Vector3.forward, 1f, 1<<8)) isBlocked = true;
-        else isBlocked = false;
+        isBlocked = Physics2D.Raycast(position, Vector2.zero, 1f, 1<<8);
     }
 
     /// <summary>
@@ -68,10 +69,12 @@ public class Node
     /// <returns>与目标节点的最短距离</returns>
     public int GetDistance(Node target, Direction direction)
     {
-        int xStep = (int)Mathf.Abs(position.x - target.position.x);
-        int yStep = (int)Mathf.Abs(position.y - target.position.y);
+        int xStep = Mathf.Abs(x - target.x);
+        int yStep = Mathf.Abs(y - target.y);
+        
         if (direction == Direction.Four) return xStep + yStep;
-        else return xStep <= yStep ? yStep : xStep;
+        
+        return xStep <= yStep ? yStep : xStep;
     }
 
     /// <summary>
@@ -81,15 +84,6 @@ public class Node
     /// <returns>可通行的邻居节点列表</returns>
     public List<Node> GetValidNeighbors(Direction direction)
     {
-        List<Node> result = new List<Node>();
-        List<Node> neighbors = direction == Direction.Four ? FourNeighbors : EightNeighbors;
-        foreach (var neighbor in neighbors)
-        {
-            if (!neighbor.isBlocked)
-            {
-                result.Add(neighbor);
-            }
-        }
-        return result;
+        return direction==Direction.Four? fourNeighbors: eightNeighbors;
     }
 }

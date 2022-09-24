@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using DG.Tweening;
-using Script;
+
 
 public class Enemy : MonoBehaviour
 {
@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     //当前所在节点
     public Node EnemyPosition { get; set; }
     //移动控制器
-    private MoveControl _moveControl = MoveControl.GetInstance();
+    private readonly MovementCtrl movementCtrl = MovementCtrl.GetInstance();
     #endregion
 
     #region 属性
@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
-        _moveControl.enemiesTrans.Add(transform);
+        movementCtrl.EnemiesTrans.Add(transform);
     }
     
     // Start is called before the first frame update
