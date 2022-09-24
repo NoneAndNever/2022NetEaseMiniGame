@@ -415,8 +415,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f22ab21a1f2424409a669fd8592a659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Entry: {fileID: 1215553739}
-  Export: {fileID: 0}
 --- !u!1 &905198502
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,7 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62a7789a298288c40b658a25c64b9459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 848315760}
+  player: {fileID: 848315760}
 --- !u!1 &1030316449
 GameObject:
   m_ObjectHideFlags: 0

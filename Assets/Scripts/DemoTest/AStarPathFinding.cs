@@ -7,16 +7,16 @@ using UnityEngine;
 /// <summary>
 /// A*寻路（以左下角为(0,0)点正数展开）
 /// </summary>
-public class AStarPathFinding: BaseManager<AStarPathFinding>
+public class AStarPathFinding : BaseManager<AStarPathFinding>
 {
-    private int width;
-    private int length;
+    private int width = 30;
+    private int length = 30;
     public Node[,] GraphNodes;
     private List<Node> obstacles;
-    
-    
-    
-    
+
+
+
+
     /// <summary>
     /// 初始化地图点
     /// </summary>
@@ -27,9 +27,9 @@ public class AStarPathFinding: BaseManager<AStarPathFinding>
         {
             for (int j = 0; j < length; j++)
             {
-                Node node = new Node(i,j);
-                if (j != 0) node.SetNeighbor(GraphNodes[i, j-1], Node.Direction.Four);
-                if (i != 0) node.SetNeighbor(GraphNodes[i-1, j], Node.Direction.Four);
+                Node node = new Node(i, j);
+                if (j != 0) node.SetNeighbor(GraphNodes[i, j - 1], Node.Direction.Four);
+                if (i != 0) node.SetNeighbor(GraphNodes[i - 1, j], Node.Direction.Four);
                 GraphNodes[i, j] = node;
             }
         }
@@ -43,7 +43,7 @@ public class AStarPathFinding: BaseManager<AStarPathFinding>
     /// <returns></returns>
     public Stack<Node> FindPath(Node startNode, Node targetNode)
     {
-        
+
         //搜索目标节点列表
         List<Node> toSearch = new List<Node>() { startNode };
         //已经搜索过的节点列表
@@ -56,9 +56,10 @@ public class AStarPathFinding: BaseManager<AStarPathFinding>
             foreach (Node t in toSearch)
             {
                 //current节点与目标节点构成的矩形的边长差
-                int currentRoadDifference = Mathf.Abs(Mathf.Abs(current.x - targetNode.x) - Mathf.Abs(current.y - targetNode.y)); 
+                int currentRoadDifference =
+                    Mathf.Abs(Mathf.Abs(current.x - targetNode.x) - Mathf.Abs(current.y - targetNode.y));
                 //t节点与目标节点构成的矩形的边长差
-                int tRoadDifference = Mathf.Abs(Mathf.Abs(t.x - targetNode.x) - Mathf.Abs(t.y - targetNode.y)); 
+                int tRoadDifference = Mathf.Abs(Mathf.Abs(t.x - targetNode.x) - Mathf.Abs(t.y - targetNode.y));
                 //判断该走哪一个邻居节点
                 if (t.F < current.F
                     //当期望最短距离相等时，判断两个节点与目标节点间的直线距离
@@ -66,53 +67,86 @@ public class AStarPathFinding: BaseManager<AStarPathFinding>
                     || t.F == current.F && t.H == current.H && currentRoadDifference >= tRoadDifference)
                     //判断矩形边长差（选择差值更小的那个节点，表示沿最长边走）
                 {
-                    
-                    if (t.F == current.F && t.H == current.H && currentRoadDifference == tRoadDifference) ;
-                }
-                
 
+                    //当由正方形变形成矩形时（currentRoadDifference == tRoadDifference）进行判断
+                    if (t != current && t.F == current.F && t.H == current.H && currentRoadDifference == tRoadDifference)
+                    {
+                        //当正方形边长大于1时
+                        if ((Mathf.Abs(t.y - targetNode.y) >= 1) && (Mathf.Abs(current.x - targetNode.x) >= 1))
+                        {
+                            //目标节点在下方的情况
+                            if (t.y > targetNode.y &&
+                                Mathf.Abs(t.x - targetNode.x) < Mathf.Abs(current.x - targetNode.x))
+                            {
+                                current = t;
+                            }
+                            //目标节点在上方的情况
+                            else if (t.y < targetNode.y &&
+                                     (targetNode.y - t.y) < (targetNode.y - current.y))
+                            {
+                                current = t;
+                            }
+                        }
+                        //当正方形变长等于1时
+                        else if ((t.x == targetNode.x && t.y == targetNode.y + 1) ||
+                                 (t.y == targetNode.y && current.y == targetNode.y - 1))
+                        {
+                            current = t;
+                        }
+                    }
+                    else current = t;
+
+                    //current = t;
+                }
             }
+
             processed.Add(current);
             toSearch.Remove(current);
-            
+
             //到达目标节点后回溯获取整条路线
-            if (current == targetNode) {
+            if (current == targetNode)
+            {
                 Node currentPathTile = targetNode;
                 Stack<Node> path = new Stack<Node>();
-                while (currentPathTile != startNode) {
+                while (currentPathTile != startNode)
+                {
                     path.Push(currentPathTile);
                     currentPathTile = currentPathTile.Connection;
                 }
+
                 return path;
             }
-      
+
             //没到目标节点就对邻居节点进行搜索
-            foreach (Node neighbor in current.GetValidNeighbors(Node.Direction.Four)) {
+            foreach (Node neighbor in current.GetValidNeighbors(Node.Direction.Four))
+            {
                 //检查邻居节点是否已经被搜索过
                 bool inProcessed = processed.Contains(neighbor);
                 //检查邻居节点是否在搜索列表
                 bool inSearch = toSearch.Contains(neighbor);
                 //求出 若以当前路径到达邻居节点的步数
                 int costToNeighbor = current.G + current.GetDistance(neighbor, Node.Direction.Four);
-      
+
                 //对未被搜索过的节点或者得到更短路径的邻居节点进行设置
-                if ((!inSearch || costToNeighbor < neighbor.G) && (!inProcessed)) { 
+                if ((!inSearch || costToNeighbor < neighbor.G) && (!inProcessed))
+                {
                     //更新邻居节点的G值
                     neighbor.G = costToNeighbor;
                     //将邻居节点与当前节点连接
                     neighbor.Connection = current;
 
-                    if (!inSearch) {
+                    if (!inSearch)
+                    {
                         //设置未被搜索过的节点的H值
                         neighbor.H = neighbor.GetDistance(targetNode, Node.Direction.Four);
                         //将未被搜索的节点添加到搜索目标列表中
                         toSearch.Add(neighbor);
                     }
                 }
-                Debug.Log(neighbor.position);
             }
-       
+
         }
+
         return null;
     }
 }
