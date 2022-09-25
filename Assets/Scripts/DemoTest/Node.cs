@@ -15,7 +15,7 @@ public class Node
     public readonly int x;
     public readonly int y;
     public readonly Vector2 position;
-    private bool isBlocked;
+    public bool isBlocked;
     private readonly List<Node> fourNeighbors = new List<Node>(4);
     private readonly List<Node> eightNeighbors = new List<Node>(8);
     public Node Connection;

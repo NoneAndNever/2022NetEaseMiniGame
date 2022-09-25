@@ -72,24 +72,21 @@ public class AStarPathFinding : BaseManager<AStarPathFinding>
                     if (t != current && t.F == current.F && t.H == current.H && currentRoadDifference == tRoadDifference)
                     {
                         //当正方形边长大于1时
-                        if ((Mathf.Abs(t.y - targetNode.y) >= 1) && (Mathf.Abs(current.x - targetNode.x) >= 1))
+                        if ((Mathf.Abs(t.y - targetNode.y) > 1) || (Mathf.Abs(t.x - targetNode.x) > 1))
                         {
                             //目标节点在下方的情况
-                            if (t.y > targetNode.y &&
-                                Mathf.Abs(t.x - targetNode.x) < Mathf.Abs(current.x - targetNode.x))
-                            {
-                                current = t;
-                            }
-                            //目标节点在上方的情况
-                            else if (t.y < targetNode.y &&
-                                     (targetNode.y - t.y) < (targetNode.y - current.y))
+                            if ((t.y > targetNode.y &&
+                                 Mathf.Abs(t.x - targetNode.x) > Mathf.Abs(current.x - targetNode.x)) ||
+                                //目标节点在上方的情况
+                                (t.y < targetNode.y &&
+                                 (targetNode.y - t.y) < (targetNode.y - current.y)))
                             {
                                 current = t;
                             }
                         }
                         //当正方形变长等于1时
-                        else if ((t.x == targetNode.x && t.y == targetNode.y + 1) ||
-                                 (t.y == targetNode.y && current.y == targetNode.y - 1))
+                        else if ((t.x == targetNode.x && t.y == targetNode.y - 1) ||
+                                 (t.y == targetNode.y && current.y == targetNode.y + 1))
                         {
                             current = t;
                         }

@@ -26,26 +26,17 @@ public class MovementCtrl: BaseManager<MovementCtrl>
     /// <param name="playerNode">玩家移动方向</param>
     public void Moving(Node playerNode)
     {
-        Node[,] graph = pathFinding.GraphNodes;
         if (!IsMoving)
         {
-        
-            
-
             //敌人移动
             Node nextPos;
             foreach (Transform enemy in EnemiesTrans)
             {
-                //移动方向判定
-                /*if (enemy.position.y < final.y)
-                    dir = (int)enemy.position.x != (int)final.x
-                        ? (enemy.position.x < final.x ? Vector3.right : Vector3.left)
-                        : Vector3.up;
-                else if (enemy.position.y > final.y) dir = Vector3.down;
-                else dir = enemy.position.x < final.x ? Vector3.right : Vector3.left;*/
-                //开始移动
+                //获取移动方向
                 nextPos = paths[enemy.gameObject].Pop();
+                //开始移动
                 enemy.DOMove(nextPos.position, moveTime);
+                //更新敌人的A*路径
                 paths[enemy.gameObject] = pathFinding.FindPath(nextPos, playerNode);
             }
             //玩家移动

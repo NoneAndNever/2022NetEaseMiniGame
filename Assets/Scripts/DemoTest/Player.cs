@@ -33,14 +33,37 @@ public class Player : MonoBehaviour
         //当角色不在移时，进行位移动画插值
         if (!movementCtrl.IsMoving)
         {
-            if (Input.GetKeyDown(KeyCode.W)) { PlayerPosition = pathFinding.GraphNodes[PlayerPosition.x, PlayerPosition.y+1];movementCtrl.Moving(PlayerPosition); }
-            else if (Input.GetKeyDown(KeyCode.S)) { PlayerPosition = pathFinding.GraphNodes[PlayerPosition.x, PlayerPosition.y-1];movementCtrl.Moving(PlayerPosition); }
-            else if (Input.GetKeyDown(KeyCode.D)) { PlayerPosition = pathFinding.GraphNodes[PlayerPosition.x+1, PlayerPosition.y];movementCtrl.Moving(PlayerPosition);}
-            else if (Input.GetKeyDown(KeyCode.A)) { PlayerPosition = pathFinding.GraphNodes[PlayerPosition.x-1, PlayerPosition.y];movementCtrl.Moving(PlayerPosition);}
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                MoveCheck(pathFinding.GraphNodes[PlayerPosition.x, PlayerPosition.y + 1]);
+            }
+            else if (Input.GetKeyDown(KeyCode.S))
+            {
+                MoveCheck(pathFinding.GraphNodes[PlayerPosition.x, PlayerPosition.y - 1]);
+            }
+            else if (Input.GetKeyDown(KeyCode.D))
+            {
+                MoveCheck(pathFinding.GraphNodes[PlayerPosition.x + 1, PlayerPosition.y]);
+            }
+            else if (Input.GetKeyDown(KeyCode.A))
+            {
+                MoveCheck(pathFinding.GraphNodes[PlayerPosition.x - 1, PlayerPosition.y]);
+            }
 
-            
         }
 
     }
 
+    /// <summary>
+    /// 移动检测，不可到达障碍物点
+    /// </summary>
+    /// <param name="nextPos">移动目标位置</param>
+    private void MoveCheck(Node nextPos)
+    {
+        if (!nextPos.isBlocked)
+        {
+            PlayerPosition = nextPos;
+            movementCtrl.Moving(PlayerPosition);
+        }
+    }
 }
