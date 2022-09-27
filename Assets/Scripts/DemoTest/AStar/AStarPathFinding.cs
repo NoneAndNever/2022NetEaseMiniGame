@@ -41,7 +41,7 @@ public class AStarPathFinding : BaseManager<AStarPathFinding>
     /// <param name="startNode">起点</param>
     /// <param name="targetNode">目标点</param>
     /// <returns></returns>
-    public Stack<Node> FindPath(Node startNode, Node targetNode)
+    public Stack<Node> FindPath(Node startNode, Node targetNode, bool isaaaa)
     {
 
         //搜索目标节点列表
@@ -55,7 +55,7 @@ public class AStarPathFinding : BaseManager<AStarPathFinding>
             Node current = toSearch[0];
             foreach (Node t in toSearch)
             {
-                //current节点与目标节点构成的矩形的边长差
+                //current节点与目标节点构成的矩形的边长差-+
                 int currentRoadDifference =
                     Mathf.Abs(Mathf.Abs(current.x - targetNode.x) - Mathf.Abs(current.y - targetNode.y));
                 //t节点与目标节点构成的矩形的边长差
@@ -84,7 +84,7 @@ public class AStarPathFinding : BaseManager<AStarPathFinding>
                                 current = t;
                             }
                         }
-                        //当正方形变长等于1时
+                        //当正方形边长等于1时
                         else if ((t.x == targetNode.x && t.y == targetNode.y - 1) ||
                                  (t.y == targetNode.y && current.y == targetNode.y + 1))
                         {

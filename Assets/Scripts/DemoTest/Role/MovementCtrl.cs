@@ -9,7 +9,8 @@ public class MovementCtrl: BaseManager<MovementCtrl>
 {
 
     public Transform PlayerTrans;//玩家
-    public List<Transform> EnemiesTrans = new List<Transform>();//所有敌人
+    public List<Transform> EnemiesTrans = new List<Transform>();//所有巡逻兵
+    public List<Transform> SnipersTrans = new List<Transform>();//所有巡逻兵
     
     public bool IsMoving { get; private set; }//移动状态
     private readonly float moveTime = 0.2f;//移动时间
@@ -28,16 +29,28 @@ public class MovementCtrl: BaseManager<MovementCtrl>
     {
         if (!IsMoving)
         {
-            //敌人移动
-            Node nextPos;
+            Dictionary<Node, bool> isOdd = new();
+            Node nextNode;
+            //侦察兵移动
             foreach (Transform enemy in EnemiesTrans)
             {
                 //获取移动方向
-                nextPos = paths[enemy.gameObject].Pop();
+                nextNode = paths[enemy.gameObject].Pop();
                 //开始移动
-                enemy.DOMove(nextPos.position, moveTime);
+                enemy.DOMove(nextNode.position, moveTime);
                 //更新敌人的A*路径
-                paths[enemy.gameObject] = pathFinding.FindPath(nextPos, playerNode);
+                if (!isOdd.ContainsKey(nextNode))
+                {
+                    isOdd.Add(nextNode,false);
+                }
+                
+                paths[enemy.gameObject] = pathFinding.FindPath(nextNode, playerNode,isOdd[nextNode]);
+                isOdd[nextNode] = !isOdd[nextNode];
+            }
+            //狙击手旋转
+            foreach (Transform sniper in SnipersTrans)
+            {
+                sniper.GetComponent<Sniper>().Move();
             }
             //玩家移动
             PlayerTrans.DOMove(playerNode.position, moveTime).OnComplete(Reset);

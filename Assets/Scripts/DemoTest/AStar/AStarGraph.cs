@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class AStarGraph : MonoBehaviour
 {
@@ -14,15 +15,17 @@ public class AStarGraph : MonoBehaviour
     {
         pathFinding.InitGraph();
         Vector3 pposition = player.transform.position;
-        player.GetComponent<Player>().PlayerPosition = pathFinding.GraphNodes[(int)pposition.x, (int)pposition.y];
+        player.GetComponent<Player>().NodePosition = pathFinding.GraphNodes[(int)pposition.x, (int)pposition.y];
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (var enemy in enemies)
         {
             Vector3 eposition = enemy.transform.position;
-            enemy.GetComponent<Enemy>().EnemyPosition = pathFinding.GraphNodes[(int)eposition.x, (int)eposition.y];
-            Stack<Node> _path = pathFinding.FindPath(enemy.GetComponent<Enemy>().EnemyPosition, player.GetComponent<Player>().PlayerPosition);
+            enemy.GetComponent<Enemy>().NodePosition = pathFinding.GraphNodes[(int)eposition.x, (int)eposition.y];
+            Stack<Node> _path = pathFinding.FindPath(enemy.GetComponent<Enemy>().NodePosition, player.GetComponent<Player>().NodePosition, false);
             movementCtrl.paths.Add(enemy, _path);
         }
+
+        
     }
 
     // Update is called once per frame
