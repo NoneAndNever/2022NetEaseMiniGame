@@ -1,20 +1,29 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.UIElements;
+using DG.Tweening;
 
 /// <summary>
-/// 直升机
+/// 巡逻兵
 /// </summary>
-public class Helicopter : Role
+public class Scout : Role
 {
+
+    #region 属性
+    #endregion
+
+
+
     private void Awake()
     {
+        
+        MovementCtrl.Scouts.Add(this);
+        MovementCtrl.paths.Add(this, null);
         EventCenter.GetInstance().AddListener<Node>(EventType.PlayerFound, SetPlayerNode);
         EventCenter.GetInstance().AddListener<Node, Vector2, float>(EventType.PlayerFoundPartly, SetPlayerNode);
     }
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -22,31 +31,18 @@ public class Helicopter : Role
         NodePosition = PathFinding.GraphNodes[(int)position.x, (int)position.y];
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public override void Move()
-    {
-        base.Move();
-    }
-    
     public Node GetPlayerNode()
     {
         return PlayerNode;
     }
 
-    private void OnTriggerStay2D(Collider2D col)
+    public override void Move()
     {
-        if (col.CompareTag("Player"))
-        {
-            Debug.Log("enter");
-            Node playerNow = col.GetComponent<Player>().NodePosition;
-            //广播玩家位置
-            EventCenter.GetInstance().BroadcastEvent<Node,Vector2,float>(EventType.PlayerFoundPartly, playerNow, transform.position, 3f);
-            Debug.Log("broadcast");
-        }
+        base.Move();
     }
 }

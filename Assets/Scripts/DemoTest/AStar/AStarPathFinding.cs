@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 
 /// <summary>
@@ -13,9 +14,6 @@ public class AStarPathFinding : BaseManager<AStarPathFinding>
     private int length = 30;
     public Node[,] GraphNodes;
     private List<Node> obstacles;
-
-
-
 
     /// <summary>
     /// 初始化地图点
@@ -41,21 +39,22 @@ public class AStarPathFinding : BaseManager<AStarPathFinding>
     /// <param name="startNode">起点</param>
     /// <param name="targetNode">目标点</param>
     /// <returns></returns>
-    public Stack<Node> FindPath(Node startNode, Node targetNode, bool isaaaa)
+    public Stack<Node> FindPath(Node startNode, [CanBeNull] Node targetNode, bool count)
     {
 
         //搜索目标节点列表
         List<Node> toSearch = new List<Node>() { startNode };
         //已经搜索过的节点列表
         List<Node> processed = new List<Node>();
+        
 
-        while (true)
+        while (targetNode != null)
         {
             //设置f值最小的节点为当前current节点，并开始搜索
             Node current = toSearch[0];
             foreach (Node t in toSearch)
             {
-                //current节点与目标节点构成的矩形的边长差-+
+                //current节点与目标节点构成的矩形的边长差
                 int currentRoadDifference =
                     Mathf.Abs(Mathf.Abs(current.x - targetNode.x) - Mathf.Abs(current.y - targetNode.y));
                 //t节点与目标节点构成的矩形的边长差

@@ -19,11 +19,21 @@ public class Player : Role
     // Start is called before the first frame update
     void Start()
     {
-        
+        var position = transform.position;
+        NodePosition = PathFinding.GraphNodes[(int)position.x, (int)position.y];
     }
 
     // Update is called once per frame
     void Update()
+    {
+        Move();
+
+    }
+
+    /// <summary>
+    /// 移动
+    /// </summary>
+    public override void Move()
     {
         //当角色不在移时，进行位移动画插值
         if (!MovementCtrl.IsMoving)
@@ -46,9 +56,8 @@ public class Player : Role
             }
 
         }
-
     }
-
+    
     /// <summary>
     /// 移动检测，不可到达障碍物点
     /// </summary>
@@ -61,4 +70,6 @@ public class Player : Role
             MovementCtrl.Moving(NodePosition);
         }
     }
+
+
 }

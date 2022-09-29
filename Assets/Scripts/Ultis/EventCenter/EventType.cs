@@ -1,8 +1,5 @@
 ﻿public enum EventType
 {
-    GoldChange,
-    HealthPointChange,
-    SkillPointChange,
-    WaveBegin,
-    EnemyDie
+    PlayerFound,
+    PlayerFoundPartly
 }
