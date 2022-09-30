@@ -27,8 +27,8 @@ public class Sniper : Role
     
     private void Awake()
     {
-        MovementCtrl.Snipers.Add(this);
         rotate.z = transform.rotation.eulerAngles.z;
+        EventCenter.AddListener(EventType.DoingMove, Move);
     }
     
     // Start is called before the first frame update
@@ -59,7 +59,7 @@ public class Sniper : Role
     public override void Move()
     {
         rotate.z = (rotate.z + 90 * (int)direction) % 360;
-        transform.DORotate(rotate,0.5f);
+        transform.DORotate(rotate,moveTime);
     }
     
     /// <summary>
@@ -77,12 +77,13 @@ public class Sniper : Role
                 || NodePosition.position + 2 * Vector2.left == playerNow.position
                 || NodePosition.position + 2 * Vector2.right == playerNow.position)
             {
+                //TODO 玩家死亡
                 Debug.Log("kill");
             }
             //广播玩家位置
             else
             {
-                EventCenter.GetInstance().BroadcastEvent(EventType.PlayerFound, playerNow);
+                EventCenter.BroadcastEvent(EventType.PlayerFound, playerNow);
                 Debug.Log("broadcast");
             }
         }

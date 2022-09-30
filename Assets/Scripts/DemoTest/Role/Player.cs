@@ -13,7 +13,7 @@ public class Player : Role
 
     private void Awake()
     {
-        MovementCtrl.PlayerTrans = transform;
+        EventCenter.AddListener(EventType.DoingMove, Move);
     }
 
     // Start is called before the first frame update
@@ -25,15 +25,6 @@ public class Player : Role
 
     // Update is called once per frame
     void Update()
-    {
-        Move();
-
-    }
-
-    /// <summary>
-    /// 移动
-    /// </summary>
-    public override void Move()
     {
         //当角色不在移时，进行位移动画插值
         if (!MovementCtrl.IsMoving)
@@ -57,6 +48,14 @@ public class Player : Role
 
         }
     }
+
+    /// <summary>
+    /// 移动
+    /// </summary>
+    public override void Move()
+    {
+        transform.DOMove(NodePosition.position, moveTime).OnComplete((delegate { MovementCtrl.IsMoving = false; }));
+    }
     
     /// <summary>
     /// 移动检测，不可到达障碍物点
@@ -67,7 +66,7 @@ public class Player : Role
         if (!nextNode.isBlocked)
         {
             NodePosition = nextNode;
-            MovementCtrl.Moving(NodePosition);
+            MovementCtrl.Moving();
         }
     }
 

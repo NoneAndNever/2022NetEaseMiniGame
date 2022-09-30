@@ -39,7 +39,7 @@ public class AStarPathFinding : BaseManager<AStarPathFinding>
     /// <param name="startNode">起点</param>
     /// <param name="targetNode">目标点</param>
     /// <returns></returns>
-    public Stack<Node> FindPath(Node startNode, [CanBeNull] Node targetNode, bool count)
+    public Stack<Node> FindPath([CanBeNull] Node startNode, [CanBeNull] Node targetNode, bool count)
     {
 
         //搜索目标节点列表
@@ -48,7 +48,7 @@ public class AStarPathFinding : BaseManager<AStarPathFinding>
         List<Node> processed = new List<Node>();
         
 
-        while (targetNode != null)
+        while (targetNode != null && toSearch.Any())
         {
             //设置f值最小的节点为当前current节点，并开始搜索
             Node current = toSearch[0];

@@ -9,10 +9,13 @@ using UnityEngine.UIElements;
 /// </summary>
 public class Helicopter : Role
 {
+    private Vector2 _direction;
+    
     private void Awake()
     {
-        EventCenter.GetInstance().AddListener<Node>(EventType.PlayerFound, SetPlayerNode);
-        EventCenter.GetInstance().AddListener<Node, Vector2, float>(EventType.PlayerFoundPartly, SetPlayerNode);
+        EventCenter.AddListener<Node>(EventType.PlayerFound, SetPlayerNode);
+        EventCenter.AddListener<Node, Vector2, float>(EventType.PlayerFoundPartly, SetPlayerNode);
+        EventCenter.AddListener(EventType.DoingMove, Move);
     }
 
     // Start is called before the first frame update
@@ -30,7 +33,7 @@ public class Helicopter : Role
 
     public override void Move()
     {
-        base.Move();
+        _direction = (Vector2)(PlayerNode?.position)?.normalized;
     }
     
     public Node GetPlayerNode()
@@ -45,7 +48,7 @@ public class Helicopter : Role
             Debug.Log("enter");
             Node playerNow = col.GetComponent<Player>().NodePosition;
             //广播玩家位置
-            EventCenter.GetInstance().BroadcastEvent<Node,Vector2,float>(EventType.PlayerFoundPartly, playerNow, transform.position, 3f);
+            EventCenter.BroadcastEvent<Node,Vector2,float>(EventType.PlayerFoundPartly, playerNow, transform.position, 3f);
             Debug.Log("broadcast");
         }
     }
