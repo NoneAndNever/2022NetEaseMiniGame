@@ -13,13 +13,14 @@ public class Player : Role
 
     private void Awake()
     {
-        MovementCtrl.PlayerTrans = transform;
+        EventCenter.AddListener(EventType.DoingMove, Move);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        var position = transform.position;
+        NodePosition = PathFinding.GraphNodes[(int)position.x, (int)position.y];
     }
 
     // Update is called once per frame
@@ -46,9 +47,16 @@ public class Player : Role
             }
 
         }
-
     }
 
+    /// <summary>
+    /// 移动
+    /// </summary>
+    public override void Move()
+    {
+        transform.DOMove(NodePosition.position, moveTime).OnComplete((delegate { MovementCtrl.IsMoving = false; }));
+    }
+    
     /// <summary>
     /// 移动检测，不可到达障碍物点
     /// </summary>
@@ -58,7 +66,9 @@ public class Player : Role
         if (!nextNode.isBlocked)
         {
             NodePosition = nextNode;
-            MovementCtrl.Moving(NodePosition);
+            MovementCtrl.Moving();
         }
     }
+
+
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEditor.Timeline;
+using UnityEngine.UIElements;
 
 /// <summary>
 /// 狙击手
@@ -11,7 +12,7 @@ using UnityEditor.Timeline;
 public class Sniper : Role
 {
     //玩家
-    private Transform player;
+    [SerializeField] private Transform player;
 
     //旋转方向
     enum RotateDirection
@@ -26,13 +27,15 @@ public class Sniper : Role
     
     private void Awake()
     {
-        MovementCtrl.SnipersTrans.Add(transform);
+        rotate.z = transform.rotation.eulerAngles.z;
+        EventCenter.AddListener(EventType.DoingMove, Move);
     }
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        var position = transform.position;
+        NodePosition = PathFinding.GraphNodes[(int)position.x, (int)position.y];
     }
 
     // Update is called once per frame
@@ -47,31 +50,42 @@ public class Sniper : Role
     /// <param name="playerTrans">玩家</param>
     private void CheckPlayerPos(Transform playerTrans)
     {
-        Vector2 toForward = transform.forward;
-        Vector2 toPlayer = playerTrans.position - transform.position;
-        float distance = toPlayer.magnitude;
-        float angel = Mathf.Acos(Vector2.Dot(toForward, toPlayer));
-        if (distance < 2f && angel <= Mathf.PI / 6)
-        {
-            if (MovementCtrl.IsMoving == true || angel == 0)
-            {
-                //玩家死亡
-                Destroy(playerTrans.GameObject());
-            }
-            else
-            {
-                //广播玩家位置Node
-                
-            }
-        }
+        
     }
 
     /// <summary>
     /// 旋转
     /// </summary>
-    public void Move()
+    public override void Move()
     {
         rotate.z = (rotate.z + 90 * (int)direction) % 360;
-        transform.DORotate(rotate,0.5f);
+        transform.DORotate(rotate,moveTime);
+    }
+    
+    /// <summary>
+    /// 进入狙击手的射界
+    /// </summary>
+    /// <param name="col"></param>
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("Player"))
+        {
+            Debug.Log("enter");
+            Node playerNow = col.GetComponent<Player>().NodePosition;
+            if (NodePosition.position + 2 * Vector2.down == playerNow.position
+                || NodePosition.position + 2 * Vector2.up == playerNow.position
+                || NodePosition.position + 2 * Vector2.left == playerNow.position
+                || NodePosition.position + 2 * Vector2.right == playerNow.position)
+            {
+                //TODO 玩家死亡
+                Debug.Log("kill");
+            }
+            //广播玩家位置
+            else
+            {
+                EventCenter.BroadcastEvent(EventType.PlayerFound, playerNow);
+                Debug.Log("broadcast");
+            }
+        }
     }
 }
