@@ -86,14 +86,4 @@ public class Node
     {
         return direction==Direction.Four? fourNeighbors: eightNeighbors;
     }
-
-    /// <summary>
-    /// 获取直线距离（平方）
-    /// </summary>
-    /// <param name="foundPosition"></param>
-    /// <returns></returns>
-    public float GetStraightDistance(Vector2 foundPosition)
-    {
-        return (foundPosition - position).sqrMagnitude;
-    }
 }

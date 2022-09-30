@@ -2,5 +2,7 @@
 {
     PlayerFound,
     PlayerFoundPartly,
-    DoingMove
+    DoingMove,
+    RoundEnd,
+    RoundBegin
 }

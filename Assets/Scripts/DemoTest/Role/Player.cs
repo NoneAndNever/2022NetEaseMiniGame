@@ -54,7 +54,15 @@ public class Player : Role
     /// </summary>
     public override void Move()
     {
-        transform.DOMove(NodePosition.position, moveTime).OnComplete((delegate { MovementCtrl.IsMoving = false; }));
+        transform.DOMove(NodePosition.position, moveTime).OnComplete((delegate
+        {
+            //锁定移动状态
+            MovementCtrl.IsMoving = false;
+            //回合数+1
+            MovementCtrl.RoundNum++;
+            if (MovementCtrl.RoundNum % 2 == 0) 
+                EventCenter.BroadcastEvent(EventType.RoundEnd);
+        }));
     }
     
     /// <summary>
