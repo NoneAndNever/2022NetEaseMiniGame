@@ -14,11 +14,7 @@ public class AStarGraph : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-<<<<<<< HEAD
-        pathFinding.InitGraph();
-=======
         pathFinding.InitGraph(AStar.position, width, length);
->>>>>>> origin/PatrickStar
     }
 
     // Update is called once per frame

@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 using System;
->>>>>>> origin/PatrickStar
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,10 +15,7 @@ public class Scout : Role
 
     private Stack<Node> _path = null;
     private Node _nextNode = null;
-<<<<<<< HEAD
-=======
     private static float scanRadius = 1.414f;
->>>>>>> origin/PatrickStar
     Node _tamp;
     
     #endregion
@@ -33,21 +27,14 @@ public class Scout : Role
         EventCenter.AddListener<Node>(EventType.PlayerFound, SetPlayerNode);
         EventCenter.AddListener<Node, Vector2, float>(EventType.PlayerFoundPartly, SetPlayerNode);
         EventCenter.AddListener(EventType.DoingMove, Move);
-<<<<<<< HEAD
-=======
         EventCenter.AddListener(EventType.RoundEnd, ScanScope);
->>>>>>> origin/PatrickStar
     }
     
     // Start is called before the first frame update
     void Start()
     {
         var position = transform.position;
-<<<<<<< HEAD
-        NodePosition = PathFinding.GraphNodes[(int)position.x, (int)position.y];
-=======
         NodePosition = PathFinding.GetGraphNode((int)position.x, (int)position.y);
->>>>>>> origin/PatrickStar
         _tamp = PlayerNode;
     }
 
@@ -76,8 +63,6 @@ public class Scout : Role
             
         _path = PathFinding.FindPath(_nextNode, PlayerNode, false);
     }
-<<<<<<< HEAD
-=======
 
     /*private void OnTriggerStay2D(Collider2D col)
     {
@@ -98,5 +83,4 @@ public class Scout : Role
             
         }
     }
->>>>>>> origin/PatrickStar
 }

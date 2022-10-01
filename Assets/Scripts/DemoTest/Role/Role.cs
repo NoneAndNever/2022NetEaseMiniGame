@@ -53,17 +53,11 @@ public class Role : MonoBehaviour
     /// <param name="radius"></param>
     protected void SetPlayerNode(Node playerNode, Vector2 foundPosition, float radius)
     {
-<<<<<<< HEAD
-        if (NodePosition.GetStraightDistance(foundPosition) < (radius * radius + 0.01f))
-=======
         if (GetStraightDistance(foundPosition) < (radius * radius + 0.01f))
->>>>>>> origin/PatrickStar
         {
             SetPlayerNode(playerNode);
         }
     }
-<<<<<<< HEAD
-=======
     
     /// <summary>
     /// 获取直线距离（平方）
@@ -74,5 +68,4 @@ public class Role : MonoBehaviour
     {
         return (foundPosition - (Vector2)transform.position).sqrMagnitude;
     }
->>>>>>> origin/PatrickStar
 }

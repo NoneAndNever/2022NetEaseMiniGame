@@ -10,16 +10,9 @@ using UnityEngine;
 /// </summary>
 public class AStarPathFinding : BaseManager<AStarPathFinding>
 {
-<<<<<<< HEAD
-    private int width = 30;
-    private int length = 30;
-    public Node[,] GraphNodes;
-    private List<Node> obstacles;
-=======
     private Node[,] GraphNodes;
     private List<Node> _obstacles;
     private Vector2 _begin;
->>>>>>> origin/PatrickStar
 
     /// <summary>
     /// 初始化地图点

@@ -20,11 +20,7 @@ public class Player : Role
     void Start()
     {
         var position = transform.position;
-<<<<<<< HEAD
-        NodePosition = PathFinding.GraphNodes[(int)position.x, (int)position.y];
-=======
         NodePosition = PathFinding.GetGraphNode((int)position.x, (int)position.y);
->>>>>>> origin/PatrickStar
     }
 
     // Update is called once per frame
@@ -58,9 +54,6 @@ public class Player : Role
     /// </summary>
     public override void Move()
     {
-<<<<<<< HEAD
-        transform.DOMove(NodePosition.position, moveTime).OnComplete((delegate { MovementCtrl.IsMoving = false; }));
-=======
         transform.DOMove(NodePosition.position, moveTime).OnComplete((delegate
         {
             //锁定移动状态
@@ -70,7 +63,6 @@ public class Player : Role
             if (MovementCtrl.RoundNum % 2 == 0) 
                 EventCenter.BroadcastEvent(EventType.RoundEnd);
         }));
->>>>>>> origin/PatrickStar
     }
     
     /// <summary>
