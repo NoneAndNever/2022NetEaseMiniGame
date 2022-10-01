@@ -20,7 +20,7 @@ public class Player : Role
     void Start()
     {
         var position = transform.position;
-        NodePosition = PathFinding.GraphNodes[(int)position.x, (int)position.y];
+        NodePosition = PathFinding.GetGraphNode((int)position.x, (int)position.y);
     }
 
     // Update is called once per frame
@@ -31,19 +31,19 @@ public class Player : Role
         {
             if (Input.GetKeyDown(KeyCode.W))
             {
-                MoveCheck(PathFinding.GraphNodes[NodePosition.x, NodePosition.y + 1]);
+                MoveCheck(PathFinding.GetGraphNode(NodePosition.x, NodePosition.y + 1));
             }
             else if (Input.GetKeyDown(KeyCode.S))
             {
-                MoveCheck(PathFinding.GraphNodes[NodePosition.x, NodePosition.y - 1]);
+                MoveCheck(PathFinding.GetGraphNode(NodePosition.x, NodePosition.y - 1));
             }
             else if (Input.GetKeyDown(KeyCode.D))
             {
-                MoveCheck(PathFinding.GraphNodes[NodePosition.x + 1, NodePosition.y]);
+                MoveCheck(PathFinding.GetGraphNode(NodePosition.x + 1, NodePosition.y));
             }
             else if (Input.GetKeyDown(KeyCode.A))
             {
-                MoveCheck(PathFinding.GraphNodes[NodePosition.x - 1, NodePosition.y]);
+                MoveCheck(PathFinding.GetGraphNode(NodePosition.x - 1, NodePosition.y));
             }
 
         }

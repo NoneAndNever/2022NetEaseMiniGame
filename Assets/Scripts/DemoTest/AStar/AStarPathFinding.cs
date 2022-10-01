@@ -10,27 +10,39 @@ using UnityEngine;
 /// </summary>
 public class AStarPathFinding : BaseManager<AStarPathFinding>
 {
-    private int width = 30;
-    private int length = 30;
-    public Node[,] GraphNodes;
-    private List<Node> obstacles;
+    private Node[,] GraphNodes;
+    private List<Node> _obstacles;
+    private Vector2 _begin;
 
     /// <summary>
     /// 初始化地图点
     /// </summary>
-    public void InitGraph()
+    public void InitGraph(Vector2 begin, int width, int length)
     {
+        _begin = begin;
         GraphNodes = new Node[width, length];
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < length; j++)
             {
-                Node node = new Node(i, j);
+                Node node = new Node((int)_begin.x + i, (int)_begin.y + j);
+                //Node node = new Node(i, j);
                 if (j != 0) node.SetNeighbor(GraphNodes[i, j - 1], Node.Direction.Four);
                 if (i != 0) node.SetNeighbor(GraphNodes[i - 1, j], Node.Direction.Four);
                 GraphNodes[i, j] = node;
             }
         }
+    }
+
+    /// <summary>
+    /// 通过坐标获取地图点
+    /// </summary>
+    /// <param name="nodeX"></param>
+    /// <param name="nodeY"></param>
+    /// <returns></returns>
+    public Node GetGraphNode(int nodeX, int nodeY)
+    {
+        return GraphNodes[nodeX - (int)_begin.x, nodeY - (int)_begin.y];
     }
 
     /// <summary>

@@ -34,7 +34,7 @@ public class Scout : Role
     void Start()
     {
         var position = transform.position;
-        NodePosition = PathFinding.GraphNodes[(int)position.x, (int)position.y];
+        NodePosition = PathFinding.GetGraphNode((int)position.x, (int)position.y);
         _tamp = PlayerNode;
     }
 

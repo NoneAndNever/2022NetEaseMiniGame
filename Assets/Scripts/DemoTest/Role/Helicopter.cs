@@ -25,7 +25,7 @@ public class Helicopter : Role
     void Start()
     {
         var position = transform.position;
-        NodePosition = PathFinding.GraphNodes[(int)position.x, (int)position.y];
+        NodePosition = PathFinding.GetGraphNode((int)position.x, (int)position.y);
     }
 
     // Update is called once per frame
