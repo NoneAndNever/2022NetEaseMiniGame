@@ -9,6 +9,10 @@ public class MovementCtrl: BaseManager<MovementCtrl>
 {
 
     public bool IsMoving;//移动状态
+<<<<<<< HEAD
+=======
+    public int RoundNum = 0;//回合数
+>>>>>>> origin/PatrickStar
 
     private readonly EventCenter EventCenter = EventCenter.GetInstance();//广播事件管理器
 

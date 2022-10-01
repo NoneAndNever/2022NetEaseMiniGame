@@ -35,7 +35,11 @@ public class Sniper : Role
     void Start()
     {
         var position = transform.position;
+<<<<<<< HEAD
         NodePosition = PathFinding.GraphNodes[(int)position.x, (int)position.y];
+=======
+        NodePosition = PathFinding.GetGraphNode((int)position.x, (int)position.y);
+>>>>>>> origin/PatrickStar
     }
 
     // Update is called once per frame
