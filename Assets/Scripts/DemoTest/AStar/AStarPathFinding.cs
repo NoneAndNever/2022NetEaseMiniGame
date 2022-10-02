@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 
 /// <summary>
@@ -9,25 +10,23 @@ using UnityEngine;
 /// </summary>
 public class AStarPathFinding : BaseManager<AStarPathFinding>
 {
-    private int width = 30;
-    private int length = 30;
-    public Node[,] GraphNodes;
-    private List<Node> obstacles;
-
-
-
+    private Node[,] GraphNodes;
+    private List<Node> _obstacles;
+    private Vector2 _begin;
 
     /// <summary>
     /// 初始化地图点
     /// </summary>
-    public void InitGraph()
+    public void InitGraph(Vector2 begin, int width, int length)
     {
+        _begin = begin;
         GraphNodes = new Node[width, length];
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < length; j++)
             {
-                Node node = new Node(i, j);
+                Node node = new Node((int)_begin.x + i, (int)_begin.y + j);
+                //Node node = new Node(i, j);
                 if (j != 0) node.SetNeighbor(GraphNodes[i, j - 1], Node.Direction.Four);
                 if (i != 0) node.SetNeighbor(GraphNodes[i - 1, j], Node.Direction.Four);
                 GraphNodes[i, j] = node;
@@ -36,26 +35,38 @@ public class AStarPathFinding : BaseManager<AStarPathFinding>
     }
 
     /// <summary>
+    /// 通过坐标获取地图点
+    /// </summary>
+    /// <param name="nodeX"></param>
+    /// <param name="nodeY"></param>
+    /// <returns></returns>
+    public Node GetGraphNode(int nodeX, int nodeY)
+    {
+        return GraphNodes[nodeX - (int)_begin.x, nodeY - (int)_begin.y];
+    }
+
+    /// <summary>
     /// 获取两个节点之间的最短路径
     /// </summary>
     /// <param name="startNode">起点</param>
     /// <param name="targetNode">目标点</param>
     /// <returns></returns>
-    public Stack<Node> FindPath(Node startNode, Node targetNode, bool isaaaa)
+    public Stack<Node> FindPath([CanBeNull] Node startNode, [CanBeNull] Node targetNode, bool count)
     {
 
         //搜索目标节点列表
         List<Node> toSearch = new List<Node>() { startNode };
         //已经搜索过的节点列表
         List<Node> processed = new List<Node>();
+        
 
-        while (true)
+        while (targetNode != null && toSearch.Any())
         {
             //设置f值最小的节点为当前current节点，并开始搜索
             Node current = toSearch[0];
             foreach (Node t in toSearch)
             {
-                //current节点与目标节点构成的矩形的边长差-+
+                //current节点与目标节点构成的矩形的边长差
                 int currentRoadDifference =
                     Mathf.Abs(Mathf.Abs(current.x - targetNode.x) - Mathf.Abs(current.y - targetNode.y));
                 //t节点与目标节点构成的矩形的边长差

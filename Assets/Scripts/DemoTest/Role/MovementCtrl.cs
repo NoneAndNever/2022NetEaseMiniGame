@@ -8,52 +8,22 @@ using UnityEngine;
 public class MovementCtrl: BaseManager<MovementCtrl>
 {
 
-    public Transform PlayerTrans;//玩家
-    public List<Transform> EnemiesTrans = new List<Transform>();//所有巡逻兵
-    public List<Transform> SnipersTrans = new List<Transform>();//所有巡逻兵
-    
-    public bool IsMoving { get; private set; }//移动状态
-    private readonly float moveTime = 0.2f;//移动时间
+    public bool IsMoving;//移动状态
+    public int RoundNum = 0;//回合数
 
-    public Dictionary<GameObject ,Stack<Node>> paths = new Dictionary<GameObject ,Stack<Node>>();
-    
-    private readonly AStarPathFinding pathFinding = AStarPathFinding.GetInstance();
-    
+    private readonly EventCenter EventCenter = EventCenter.GetInstance();//广播事件管理器
+
 
     
     /// <summary>
     /// 角色与敌人的移动
     /// </summary>
-    /// <param name="playerNode">玩家移动方向</param>
-    public void Moving(Node playerNode)
+    public void Moving()
     {
         if (!IsMoving)
         {
-            Dictionary<Node, bool> isOdd = new();
-            Node nextNode;
-            //侦察兵移动
-            foreach (Transform enemy in EnemiesTrans)
-            {
-                //获取移动方向
-                nextNode = paths[enemy.gameObject].Pop();
-                //开始移动
-                enemy.DOMove(nextNode.position, moveTime);
-                //更新敌人的A*路径
-                if (!isOdd.ContainsKey(nextNode))
-                {
-                    isOdd.Add(nextNode,false);
-                }
-                
-                paths[enemy.gameObject] = pathFinding.FindPath(nextNode, playerNode,isOdd[nextNode]);
-                isOdd[nextNode] = !isOdd[nextNode];
-            }
-            //狙击手旋转
-            foreach (Transform sniper in SnipersTrans)
-            {
-                sniper.GetComponent<Sniper>().Move();
-            }
-            //玩家移动
-            PlayerTrans.DOMove(playerNode.position, moveTime).OnComplete(Reset);
+            //所有单位进行移动
+            EventCenter.BroadcastEvent(EventType.DoingMove);
             //锁定移动状态
             IsMoving = true;
         }

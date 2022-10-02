@@ -13,13 +13,14 @@ public class Player : Role
 
     private void Awake()
     {
-        MovementCtrl.PlayerTrans = transform;
+        EventCenter.AddListener(EventType.DoingMove, Move);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        var position = transform.position;
+        NodePosition = PathFinding.GetGraphNode((int)position.x, (int)position.y);
     }
 
     // Update is called once per frame
@@ -30,25 +31,40 @@ public class Player : Role
         {
             if (Input.GetKeyDown(KeyCode.W))
             {
-                MoveCheck(PathFinding.GraphNodes[NodePosition.x, NodePosition.y + 1]);
+                MoveCheck(PathFinding.GetGraphNode(NodePosition.x, NodePosition.y + 1));
             }
             else if (Input.GetKeyDown(KeyCode.S))
             {
-                MoveCheck(PathFinding.GraphNodes[NodePosition.x, NodePosition.y - 1]);
+                MoveCheck(PathFinding.GetGraphNode(NodePosition.x, NodePosition.y - 1));
             }
             else if (Input.GetKeyDown(KeyCode.D))
             {
-                MoveCheck(PathFinding.GraphNodes[NodePosition.x + 1, NodePosition.y]);
+                MoveCheck(PathFinding.GetGraphNode(NodePosition.x + 1, NodePosition.y));
             }
             else if (Input.GetKeyDown(KeyCode.A))
             {
-                MoveCheck(PathFinding.GraphNodes[NodePosition.x - 1, NodePosition.y]);
+                MoveCheck(PathFinding.GetGraphNode(NodePosition.x - 1, NodePosition.y));
             }
 
         }
-
     }
 
+    /// <summary>
+    /// 移动
+    /// </summary>
+    public override void Move()
+    {
+        transform.DOMove(NodePosition.position, moveTime).OnComplete((delegate
+        {
+            //锁定移动状态
+            MovementCtrl.IsMoving = false;
+            //回合数+1
+            MovementCtrl.RoundNum++;
+            if (MovementCtrl.RoundNum % 2 == 0) 
+                EventCenter.BroadcastEvent(EventType.RoundEnd);
+        }));
+    }
+    
     /// <summary>
     /// 移动检测，不可到达障碍物点
     /// </summary>
@@ -58,7 +74,9 @@ public class Player : Role
         if (!nextNode.isBlocked)
         {
             NodePosition = nextNode;
-            MovementCtrl.Moving(NodePosition);
+            MovementCtrl.Moving();
         }
     }
+
+
 }
