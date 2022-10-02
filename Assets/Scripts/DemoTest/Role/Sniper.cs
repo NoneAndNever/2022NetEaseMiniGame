@@ -11,8 +11,6 @@ using UnityEngine.UIElements;
 /// </summary>
 public class Sniper : Role
 {
-    //玩家
-    [SerializeField] private Transform player;
 
     //旋转方向
     enum RotateDirection
@@ -29,8 +27,10 @@ public class Sniper : Role
     {
         rotate.z = transform.rotation.eulerAngles.z;
         EventCenter.AddListener(EventType.DoingMove, Move);
+        EventCenter.AddListener(EventType.RoundEnd, EndCheck);
     }
-    
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,18 +41,37 @@ public class Sniper : Role
     // Update is called once per frame
     void Update()
     {
-        CheckPlayerPos(player);
     }
     
     /// <summary>
-    /// 判断玩家是否进入检测范围
+    /// 回合末检查
     /// </summary>
-    /// <param name="playerTrans">玩家</param>
-    private void CheckPlayerPos(Transform playerTrans)
+    private void EndCheck()
     {
-        
+        Vector2 lookAt = Vector2.zero;
+        switch (rotate.z)
+        {
+            case 0:
+                lookAt = Vector2.up;
+                break;
+            case 90:
+                lookAt = Vector2.left;
+                break;
+            case 180:
+                lookAt = Vector2.down;
+                break;
+            case 270:
+                lookAt = Vector2.right;
+                break;
+        }
+        RaycastHit2D hit = Physics2D.Raycast(lookAt * 1.5f, lookAt, 2f, 1 << 6);
+        if (hit)
+        {
+            hit.collider.gameObject.SetActive(false);
+            Time.timeScale = 0;
+        }
     }
-
+    
     /// <summary>
     /// 旋转
     /// </summary>
@@ -72,13 +91,14 @@ public class Sniper : Role
         {
             Debug.Log("enter");
             Node playerNow = col.GetComponent<Player>().NodePosition;
-            if (NodePosition.position + 2 * Vector2.down == playerNow.position
-                || NodePosition.position + 2 * Vector2.up == playerNow.position
-                || NodePosition.position + 2 * Vector2.left == playerNow.position
-                || NodePosition.position + 2 * Vector2.right == playerNow.position)
+            if (NodePosition.position + Vector2.down == playerNow.position && (int)rotate.z == 0
+                || NodePosition.position + Vector2.up == playerNow.position && (int)rotate.z == 180
+                || NodePosition.position + Vector2.left == playerNow.position && (int)rotate.z == 270
+                || NodePosition.position + Vector2.right == playerNow.position && (int)rotate.z == 180)
             {
-                //TODO 玩家死亡
-                Debug.Log("kill");
+                //狙击手死亡
+                Debug.Log("kill Sniper");
+                gameObject.SetActive(false);
             }
             //广播玩家位置
             else
@@ -88,4 +108,5 @@ public class Sniper : Role
             }
         }
     }
+
 }

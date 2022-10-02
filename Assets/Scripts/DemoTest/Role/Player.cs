@@ -10,7 +10,8 @@ using DG.Tweening;
 public class Player : Role
 {
 
-
+    public Node nextNode;
+    
     private void Awake()
     {
         EventCenter.AddListener(EventType.DoingMove, Move);
@@ -26,9 +27,11 @@ public class Player : Role
     // Update is called once per frame
     void Update()
     {
+        
         //当角色不在移时，进行位移动画插值
         if (!MovementCtrl.IsMoving)
         {
+            
             if (Input.GetKeyDown(KeyCode.W))
             {
                 MoveCheck(PathFinding.GetGraphNode(NodePosition.x, NodePosition.y + 1));
@@ -54,14 +57,16 @@ public class Player : Role
     /// </summary>
     public override void Move()
     {
-        transform.DOMove(NodePosition.position, moveTime).OnComplete((delegate
+        transform.DOMove(nextNode.position, moveTime).OnComplete((delegate
         {
             //锁定移动状态
             MovementCtrl.IsMoving = false;
+            //更新玩家的地图点
+            NodePosition = nextNode;
             //回合数+1
             MovementCtrl.RoundNum++;
-            if (MovementCtrl.RoundNum % 2 == 0) 
-                EventCenter.BroadcastEvent(EventType.RoundEnd);
+            EventCenter.BroadcastEvent(EventType.RoundEnd);
+            EventCenter.BroadcastEvent(EventType.RoundBegin);
         }));
     }
     
@@ -73,8 +78,11 @@ public class Player : Role
     {
         if (!nextNode.isBlocked)
         {
-            NodePosition = nextNode;
-            MovementCtrl.Moving();
+            if (this.nextNode != nextNode) this.nextNode = nextNode;
+            else
+            {
+                MovementCtrl.Moving();
+            }
         }
     }
 

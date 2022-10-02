@@ -10,7 +10,7 @@ public class Role : MonoBehaviour
     #region 变量定义
     protected Node PlayerNode { get; set; }//玩家节点
     public Node NodePosition { get; set; }//自身节点
-    protected float moveTime = 0.2f;
+    protected float moveTime = 0.3f;
     
     protected readonly MovementCtrl MovementCtrl = MovementCtrl.GetInstance(); //移动控制器
     protected readonly AStarPathFinding PathFinding = AStarPathFinding.GetInstance();//A*地图
