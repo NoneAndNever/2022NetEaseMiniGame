@@ -651,15 +651,6 @@ AnimationClip:
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 1.9333333
-        value: {x: 0, y: 0, z: 16.551}
-        inSlope: {x: 0, y: 0, z: -22.151981}
-        outSlope: {x: 0, y: 0, z: -22.151981}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-      - serializedVersion: 3
         time: 2
         value: {x: 0, y: 0, z: 10.202}
         inSlope: {x: 0, y: 0, z: 0}
@@ -716,15 +707,6 @@ AnimationClip:
         value: {x: 0, y: 0, z: 13.229}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-      - serializedVersion: 3
-        time: 1.9333333
-        value: {x: 0, y: 0, z: 12.237}
-        inSlope: {x: 0, y: 0, z: -11.903994}
-        outSlope: {x: 0, y: 0, z: -11.903994}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
@@ -835,27 +817,18 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 1.6666666
-        value: {x: 0, y: 0, z: -160.194}
-        inSlope: {x: 0, y: 0, z: -17.162437}
-        outSlope: {x: 0, y: 0, z: -17.162437}
+        value: {x: 0, y: 0, z: -164.615}
+        inSlope: {x: 0, y: 0, z: -4.132763}
+        outSlope: {x: 0, y: 0, z: -4.132763}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 1.8166667
-        value: {x: 0, y: 0, z: -164.032}
-        inSlope: {x: 0, y: 0, z: -27.866251}
-        outSlope: {x: 0, y: 0, z: -27.866251}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-      - serializedVersion: 3
-        time: 1.9333333
-        value: {x: 0, y: 0, z: -167.625}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
+        time: 1.8333334
+        value: {x: 0, y: 0, z: -165.476}
+        inSlope: {x: 0, y: 0, z: -8.342971}
+        outSlope: {x: 0, y: 0, z: -8.342971}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
@@ -9927,6 +9900,25 @@ AnimationClip:
     path: Cosette/left foot
     classID: 212
     script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 16
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_SortingOrder
+    path: Cosette/hair-front
+    classID: 212
+    script: {fileID: 0}
   m_PPtrCurves: []
   m_SampleRate: 60
   m_WrapMode: 0
@@ -10791,6 +10783,13 @@ AnimationClip:
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 3734018483
+      attribute: 3762991556
+      script: {fileID: 0}
+      typeID: 212
+      customType: 26
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 2548799648
       attribute: 3762991556
       script: {fileID: 0}
       typeID: 212
@@ -24656,15 +24655,6 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1.9333333
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
         time: 2
         value: 0
         inSlope: 0
@@ -24721,15 +24711,6 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1.6666666
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 1.9333333
         value: 0
         inSlope: 0
         outSlope: 0
@@ -24802,15 +24783,6 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1.9333333
-        value: 16.551
-        inSlope: -22.151981
-        outSlope: -22.151981
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
         time: 2
         value: 10.202
         inSlope: 0
@@ -24867,15 +24839,6 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1.6666666
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 1.9333333
         value: 0
         inSlope: 0
         outSlope: 0
@@ -24948,15 +24911,6 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1.9333333
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
         time: 2
         value: 0
         inSlope: 0
@@ -25016,15 +24970,6 @@ AnimationClip:
         value: 13.229
         inSlope: 0
         outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 1.9333333
-        value: 12.237
-        inSlope: -11.903994
-        outSlope: -11.903994
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -25277,16 +25222,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1.8166667
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 1.9333333
+        time: 1.8333334
         value: 0
         inSlope: 0
         outSlope: 0
@@ -25350,16 +25286,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1.8166667
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 1.9333333
+        time: 1.8333334
         value: 0
         inSlope: 0
         outSlope: 0
@@ -25415,27 +25342,18 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1.6666666
-        value: -160.194
-        inSlope: -17.162437
-        outSlope: -17.162437
+        value: -164.615
+        inSlope: -4.132763
+        outSlope: -4.132763
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1.8166667
-        value: -164.032
-        inSlope: -27.866251
-        outSlope: -27.866251
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 1.9333333
-        value: -167.625
-        inSlope: 0
-        outSlope: 0
+        time: 1.8333334
+        value: -165.476
+        inSlope: -8.342971
+        outSlope: -8.342971
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -44815,6 +44733,25 @@ AnimationClip:
     path: Cosette/left foot
     classID: 212
     script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 16
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_SortingOrder
+    path: Cosette/hair-front
+    classID: 212
+    script: {fileID: 0}
   m_EulerEditorCurves:
   - curve:
       serializedVersion: 2
@@ -44823,7 +44760,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_55
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_82
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -44833,7 +44770,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_55
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_82
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -44843,7 +44780,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_55
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_82
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -44883,7 +44820,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_82
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_48/bone_49
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -44893,7 +44830,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_82
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_48/bone_49
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -44903,7 +44840,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_82
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_48/bone_49
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -44913,7 +44850,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_78
+    path: Cosette/bone_1/bone_2/bone_3/bone_89
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -44923,7 +44860,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_78
+    path: Cosette/bone_1/bone_2/bone_3/bone_89
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -44933,7 +44870,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_78
+    path: Cosette/bone_1/bone_2/bone_3/bone_89
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -44943,7 +44880,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40/bone_44
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40/bone_41/bone_42
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -44953,7 +44890,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40/bone_44
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40/bone_41/bone_42
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -44963,7 +44900,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40/bone_44
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40/bone_41/bone_42
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -44973,7 +44910,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_4/bone_80/bone_90
+    path: Cosette/bone_1/bone_2/bone_3/bone_4/bone_80/bone_86
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -44983,7 +44920,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_4/bone_80/bone_90
+    path: Cosette/bone_1/bone_2/bone_3/bone_4/bone_80/bone_86
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -44993,217 +44930,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_4/bone_80/bone_90
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: Cosette/hair-front
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: Cosette/hair-front
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Cosette/hair-front
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_27
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_27
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_27
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_30
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_30
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_30
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_13/bone_14/bone_15
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_13/bone_14/bone_15
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_13/bone_14/bone_15
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_75
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_75
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_75
+    path: Cosette/bone_1/bone_2/bone_3/bone_4/bone_80/bone_86
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45243,7 +44970,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_9/bone_10
+    path: Cosette/hair-front
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45253,7 +44980,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_9/bone_10
+    path: Cosette/hair-front
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45263,7 +44990,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_9/bone_10
+    path: Cosette/hair-front
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45273,7 +45000,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_16/bone_17
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45283,7 +45010,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_16/bone_17
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45293,7 +45020,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_16/bone_17
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45303,7 +45030,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_65/bone_66
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_27
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45313,7 +45040,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_65/bone_66
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_27
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45323,37 +45050,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_65/bone_66
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_16/bone_17/bone_18/bone_19
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_16/bone_17/bone_18/bone_19
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_16/bone_17/bone_18/bone_19
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_27
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45393,7 +45090,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40/bone_44/bone_45/bone_46
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45403,7 +45100,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40/bone_44/bone_45/bone_46
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45413,7 +45110,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40/bone_44/bone_45/bone_46
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45423,7 +45120,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_69/bone_70/bone_71
+    path: Cosette/bone_1/bone_2/bone_3/bone_75
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45433,7 +45130,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_69/bone_70/bone_71
+    path: Cosette/bone_1/bone_2/bone_3/bone_75
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45443,7 +45140,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_69/bone_70/bone_71
+    path: Cosette/bone_1/bone_2/bone_3/bone_75
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45453,7 +45150,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_16/bone_17/bone_18
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45463,7 +45160,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_16/bone_17/bone_18
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45473,67 +45170,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_9/bone_10/bone_11
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_9/bone_10/bone_11
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_9/bone_10/bone_11
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_4/bone_80
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_4/bone_80
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_4/bone_80
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_16/bone_17/bone_18
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45573,7 +45210,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_61/bone_62/bone_63
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_13/bone_14/bone_15
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45583,7 +45220,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_61/bone_62/bone_63
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_13/bone_14/bone_15
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45593,7 +45230,307 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_61/bone_62/bone_63
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_13/bone_14/bone_15
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: Cosette/bone_1/bone_2/bone_65/bone_66
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Cosette/bone_1/bone_2/bone_65/bone_66
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Cosette/bone_1/bone_2/bone_65/bone_66
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_16/bone_17
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_16/bone_17
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_16/bone_17
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: Cosette/bone_1/bone_2/bone_3/bone_61/bone_62/bone_63/bone_64
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Cosette/bone_1/bone_2/bone_3/bone_61/bone_62/bone_63/bone_64
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Cosette/bone_1/bone_2/bone_3/bone_61/bone_62/bone_63/bone_64
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40/bone_44/bone_45/bone_46
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40/bone_44/bone_45/bone_46
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40/bone_44/bone_45/bone_46
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: Cosette/bone_1/bone_2/bone_78
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Cosette/bone_1/bone_2/bone_78
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Cosette/bone_1/bone_2/bone_78
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40/bone_41/bone_42/bone_43
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40/bone_41/bone_42/bone_43
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40/bone_41/bone_42/bone_43
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_9
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_9
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_9
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: Cosette/bone_1/bone_2
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Cosette/bone_1/bone_2
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Cosette/bone_1/bone_2
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_59
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_59
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_59
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: Cosette/bone_1/bone_72/bone_73/bone_74
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Cosette/bone_1/bone_72/bone_73/bone_74
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Cosette/bone_1/bone_72/bone_73/bone_74
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45633,7 +45570,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_5/bone_6
+    path: Cosette/bone_1/bone_2/bone_3/bone_4/bone_80/bone_90
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45643,7 +45580,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_5/bone_6
+    path: Cosette/bone_1/bone_2/bone_3/bone_4/bone_80/bone_90
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45653,7 +45590,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_5/bone_6
+    path: Cosette/bone_1/bone_2/bone_3/bone_4/bone_80/bone_90
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45663,7 +45600,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_55/bone_56
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_82/bone_83
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45673,7 +45610,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_55/bone_56
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_82/bone_83
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45683,7 +45620,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_55/bone_56
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_82/bone_83
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45783,7 +45720,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_5
+    path: Cosette/bone_1/bone_2/bone_3/bone_4/bone_80/bone_87
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45793,7 +45730,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_5
+    path: Cosette/bone_1/bone_2/bone_3/bone_4/bone_80/bone_87
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45803,7 +45740,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_5
+    path: Cosette/bone_1/bone_2/bone_3/bone_4/bone_80/bone_87
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45813,7 +45750,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_4
+    path: Cosette/bone_1/bone_69/bone_70/bone_71
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45823,7 +45760,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_4
+    path: Cosette/bone_1/bone_69/bone_70/bone_71
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45833,7 +45770,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_4
+    path: Cosette/bone_1/bone_69/bone_70/bone_71
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45843,7 +45780,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_48
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40/bone_44
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45853,7 +45790,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_48
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40/bone_44
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45863,7 +45800,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_48
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40/bone_44
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45903,7 +45840,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2
+    path: Cosette/bone_1/bone_2/bone_3/bone_61/bone_62
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45913,7 +45850,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2
+    path: Cosette/bone_1/bone_2/bone_3/bone_61/bone_62
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -45923,7 +45860,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2
+    path: Cosette/bone_1/bone_2/bone_3/bone_61/bone_62
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46263,7 +46200,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_5/bone_6/bone_7
+    path: Cosette/bone_1/bone_2/bone_3/bone_5
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46273,7 +46210,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_5/bone_6/bone_7
+    path: Cosette/bone_1/bone_2/bone_3/bone_5
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46283,7 +46220,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_5/bone_6/bone_7
+    path: Cosette/bone_1/bone_2/bone_3/bone_5
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46293,7 +46230,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_4/bone_80/bone_87
+    path: Cosette/bone_1/bone_2/bone_3/bone_4/bone_80
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46303,7 +46240,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_4/bone_80/bone_87
+    path: Cosette/bone_1/bone_2/bone_3/bone_4/bone_80
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46313,7 +46250,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_4/bone_80/bone_87
+    path: Cosette/bone_1/bone_2/bone_3/bone_4/bone_80
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46353,7 +46290,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_59/bone_60
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_58
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46363,7 +46300,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_59/bone_60
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_58
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46373,7 +46310,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_59/bone_60
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_58
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46473,7 +46410,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_30/bone_31
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_28/bone_29
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46483,7 +46420,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_30/bone_31
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_28/bone_29
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46493,7 +46430,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_30/bone_31
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_28/bone_29
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46503,7 +46440,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_48/bone_49/bone_50
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_48
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46513,7 +46450,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_48/bone_49/bone_50
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_48
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46523,7 +46460,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_48/bone_49/bone_50
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_48
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46593,7 +46530,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_82/bone_83
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_48/bone_49/bone_50
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46603,7 +46540,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_82/bone_83
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_48/bone_49/bone_50
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46613,7 +46550,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_82/bone_83
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_48/bone_49/bone_50
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46833,7 +46770,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_16/bone_17/bone_18
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_16
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46843,7 +46780,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_16/bone_17/bone_18
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_16
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46853,7 +46790,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_16/bone_17/bone_18
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_16
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46863,7 +46800,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_88
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_9/bone_10/bone_11
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46873,7 +46810,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_88
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_9/bone_10/bone_11
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46883,7 +46820,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_88
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_9/bone_10/bone_11
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46923,7 +46860,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_30/bone_31/bone_32
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46933,7 +46870,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_30/bone_31/bone_32
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46943,7 +46880,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_30/bone_31/bone_32
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46953,7 +46890,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_13/bone_14
+    path: Cosette/bone_1/bone_2/bone_3/bone_61/bone_62/bone_63
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46963,7 +46900,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_13/bone_14
+    path: Cosette/bone_1/bone_2/bone_3/bone_61/bone_62/bone_63
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -46973,7 +46910,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_13/bone_14
+    path: Cosette/bone_1/bone_2/bone_3/bone_61/bone_62/bone_63
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47073,7 +47010,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_48/bone_49
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47083,7 +47020,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_48/bone_49
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47093,7 +47030,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47/bone_48/bone_49
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_47
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47103,7 +47040,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_61
+    path: Cosette/bone_1/bone_2/bone_3/bone_5/bone_6
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47113,7 +47050,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_61
+    path: Cosette/bone_1/bone_2/bone_3/bone_5/bone_6
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47123,7 +47060,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_61
+    path: Cosette/bone_1/bone_2/bone_3/bone_5/bone_6
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47133,7 +47070,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_72/bone_73/bone_74
+    path: Cosette/bone_1/bone_2/bone_91
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47143,7 +47080,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_72/bone_73/bone_74
+    path: Cosette/bone_1/bone_2/bone_91
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47153,7 +47090,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_72/bone_73/bone_74
+    path: Cosette/bone_1/bone_2/bone_91
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47163,7 +47100,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40/bone_41/bone_42
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47173,7 +47110,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40/bone_41/bone_42
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47183,7 +47120,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40/bone_41/bone_42
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47193,7 +47130,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_16
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_13/bone_14
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47203,7 +47140,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_16
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_13/bone_14
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47213,7 +47150,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_16
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_13/bone_14
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47253,66 +47190,6 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_59
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_59
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_59
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_77
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_77
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_77
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
     path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_55/bone_84
     classID: 4
     script: {fileID: 0}
@@ -47343,7 +47220,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_9/bone_10/bone_11/bone_12
+    path: Cosette/bone_1/bone_2/bone_3/bone_88
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47353,7 +47230,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_9/bone_10/bone_11/bone_12
+    path: Cosette/bone_1/bone_2/bone_3/bone_88
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47363,7 +47240,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_9/bone_10/bone_11/bone_12
+    path: Cosette/bone_1/bone_2/bone_3/bone_88
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47373,7 +47250,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_9
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_55/bone_56
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47383,7 +47260,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_9
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_55/bone_56
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47393,7 +47270,67 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_9
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_55/bone_56
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_9/bone_10
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_9/bone_10
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_9/bone_10
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_59/bone_60
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_59/bone_60
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_59/bone_60
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47463,7 +47400,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_28/bone_29
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47473,7 +47410,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_28/bone_29
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47483,7 +47420,37 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_28/bone_29
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47523,7 +47490,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40/bone_41/bone_42/bone_43
+    path: Cosette/bone_1/bone_2/bone_3/bone_4
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47533,7 +47500,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40/bone_41/bone_42/bone_43
+    path: Cosette/bone_1/bone_2/bone_3/bone_4
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47543,37 +47510,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40/bone_41/bone_42/bone_43
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_4/bone_80/bone_86
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_4/bone_80/bone_86
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_4/bone_80/bone_86
+    path: Cosette/bone_1/bone_2/bone_3/bone_4
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47613,7 +47550,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_30/bone_31/bone_32
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_30
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47623,7 +47560,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_30/bone_31/bone_32
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_30
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47633,7 +47570,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_30/bone_31/bone_32
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_30
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47673,7 +47610,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_30/bone_31
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47683,7 +47620,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_30/bone_31
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47693,7 +47630,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26/bone_30/bone_31
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47733,7 +47670,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_16/bone_17/bone_18/bone_19
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47743,7 +47680,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_16/bone_17/bone_18/bone_19
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47753,7 +47690,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_16/bone_17/bone_18/bone_19
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47823,7 +47760,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_58
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_55/bone_56/bone_57
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47833,7 +47770,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_58
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_55/bone_56/bone_57
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47843,7 +47780,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_58
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_55/bone_56/bone_57
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47853,7 +47790,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47863,7 +47800,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47873,7 +47810,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23/bone_24/bone_25/bone_26
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_22/bone_23
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47913,7 +47850,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_61/bone_62
+    path: Cosette/bone_1/bone_2/bone_3/bone_5/bone_6/bone_7
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47923,7 +47860,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_61/bone_62
+    path: Cosette/bone_1/bone_2/bone_3/bone_5/bone_6/bone_7
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47933,7 +47870,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_61/bone_62
+    path: Cosette/bone_1/bone_2/bone_3/bone_5/bone_6/bone_7
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47973,7 +47910,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47983,7 +47920,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -47993,7 +47930,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38/bone_39/bone_40
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_38
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -48093,7 +48030,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_91
+    path: Cosette/bone_1/bone_2/bone_77
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -48103,7 +48040,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_91
+    path: Cosette/bone_1/bone_2/bone_77
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -48113,7 +48050,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_91
+    path: Cosette/bone_1/bone_2/bone_77
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -48123,7 +48060,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_55/bone_56/bone_57
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_55
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -48133,7 +48070,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_55/bone_56/bone_57
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_55
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -48143,7 +48080,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_55/bone_56/bone_57
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_55
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -48183,7 +48120,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_89
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_9/bone_10/bone_11/bone_12
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -48193,7 +48130,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_89
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_9/bone_10/bone_11/bone_12
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -48203,7 +48140,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_89
+    path: Cosette/bone_1/bone_2/bone_3/bone_8/bone_9/bone_10/bone_11/bone_12
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -48213,7 +48150,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Cosette/bone_1/bone_2/bone_3/bone_61/bone_62/bone_63/bone_64
+    path: Cosette/bone_1/bone_2/bone_3/bone_61
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -48223,7 +48160,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Cosette/bone_1/bone_2/bone_3/bone_61/bone_62/bone_63/bone_64
+    path: Cosette/bone_1/bone_2/bone_3/bone_61
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -48233,7 +48170,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Cosette/bone_1/bone_2/bone_3/bone_61/bone_62/bone_63/bone_64
+    path: Cosette/bone_1/bone_2/bone_3/bone_61
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
