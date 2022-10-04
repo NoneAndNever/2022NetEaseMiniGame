@@ -16,7 +16,7 @@ public class Scout : Role
     private Stack<Node> _path = null;
     private Node _nextNode = null;
     private static float scanRadius = 1.414f;
-    Node _tamp;
+    private Node _tamp;
     
     #endregion
 
@@ -27,7 +27,7 @@ public class Scout : Role
         EventCenter.AddListener<Node>(EventType.PlayerFound, SetPlayerNode);
         EventCenter.AddListener<Node, Vector2, float>(EventType.PlayerFoundPartly, SetPlayerNode);
         EventCenter.AddListener(EventType.DoingMove, Move);
-        EventCenter.AddListener(EventType.RoundEnd, ScanScope);
+        EventCenter.AddListener(EventType.RoundEnd, EndCheck);
     }
     
     // Start is called before the first frame update
@@ -64,23 +64,35 @@ public class Scout : Role
         _path = PathFinding.FindPath(_nextNode, PlayerNode, false);
     }
 
-    /*private void OnTriggerStay2D(Collider2D col)
+    /// <summary>
+    /// 回合末检查
+    /// </summary>
+    private void EndCheck()
     {
-        if (col.CompareTag("Player") && !MovementCtrl.IsMoving && MovementCtrl.RoundNum % 2 == 0)
+        if (MovementCtrl.RoundNum % 2 == 0)
         {
-            PlayerNode = col.GetComponent<Player>().NodePosition;
+               var col = Physics2D.OverlapCircle(transform.position, scanRadius, 1 << 6);
+               if (col)
+               {
+                   Debug.Log("enter");
+                   PlayerNode = col.GetComponent<Player>().NodePosition;
+               }     
         }
-    }*/
-    
-    private void ScanScope()
+
+    }
+
+    /// <summary>
+    /// 检测侦察兵
+    /// </summary>
+    /// <param name="col"></param>
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        var col = Physics2D.OverlapCircle(transform.position, scanRadius, 1 << 6);
-        
-        if (col && !MovementCtrl.IsMoving && MovementCtrl.RoundNum % 2 == 0)
+        //TODO 玩家死亡
+        if (col.CompareTag("Player"))
         {
-            Debug.Log("enter");
-            PlayerNode = col.GetComponent<Player>().NodePosition;
-            
+            Debug.Log("kill player");
+            col.gameObject.SetActive(false);
+            Time.timeScale = 0;
         }
     }
 }
