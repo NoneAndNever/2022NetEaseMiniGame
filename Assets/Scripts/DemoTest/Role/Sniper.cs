@@ -64,7 +64,7 @@ public class Sniper : Role
                 lookAt = Vector2.right;
                 break;
         }
-        RaycastHit2D hit = Physics2D.Raycast(lookAt * 1.5f, lookAt, 2f, 1 << 6);
+        RaycastHit2D hit = Physics2D.Raycast(NodePosition.position + lookAt * 0.5f, lookAt, 2f, 1 << 6);
         if (hit)
         {
             hit.collider.gameObject.SetActive(false);
