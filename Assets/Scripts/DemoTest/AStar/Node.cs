@@ -40,8 +40,8 @@ public class Node
     /// <param name="direction">节点联通方向</param>
     public void SetNeighbor(Node node, Direction direction)
     {
-        if (isBlocked|| node.isBlocked) return;
-        if (direction == Direction.Four)
+        if (isBlocked|| node.isBlocked ) return;
+        if (direction == Direction.Four && CheckObstacle(node))
         {
             fourNeighbors.Add(node);
             node.fourNeighbors.Add(this);
@@ -59,6 +59,14 @@ public class Node
     private void CheckObstacle()
     {
         isBlocked = Physics2D.Raycast(position, Vector2.zero, 1f, 1<<8);
+    }
+    
+    /// <summary>
+    /// 检测该节点是否被阻挡
+    /// </summary>
+    private bool CheckObstacle(Node other)
+    {
+        return  Physics2D.Raycast(position, (other.position-position), 1f, 1<<8);
     }
 
     /// <summary>
