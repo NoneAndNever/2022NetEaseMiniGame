@@ -41,7 +41,7 @@ public class Node
     public void SetNeighbor(Node node, Direction direction)
     {
         if (isBlocked|| node.isBlocked ) return;
-        if (direction == Direction.Four && CheckObstacle(node))
+        if (direction == Direction.Four && !CheckObstacle(node))
         {
             fourNeighbors.Add(node);
             node.fourNeighbors.Add(this);
