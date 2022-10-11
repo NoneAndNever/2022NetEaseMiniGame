@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,6 +31,11 @@ public class Sniper : Role
         EventCenter.AddListener(EventType.RoundEnd, EndCheck);
     }
 
+    private void OnDisable()
+    {
+        EventCenter.RemoveListener(EventType.DoingMove, Move);
+        EventCenter.RemoveListener(EventType.RoundEnd, EndCheck);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -94,7 +100,7 @@ public class Sniper : Role
             if (NodePosition.position + Vector2.down == playerNow.position && (int)rotate.z == 0
                 || NodePosition.position + Vector2.up == playerNow.position && (int)rotate.z == 180
                 || NodePosition.position + Vector2.left == playerNow.position && (int)rotate.z == 270
-                || NodePosition.position + Vector2.right == playerNow.position && (int)rotate.z == 180)
+                || NodePosition.position + Vector2.right == playerNow.position && (int)rotate.z == 90)
             {
                 //狙击手死亡
                 Debug.Log("kill Sniper");
