@@ -29,7 +29,15 @@ public class Scout : Role
         EventCenter.AddListener(EventType.DoingMove, Move);
         EventCenter.AddListener(EventType.RoundEnd, EndCheck);
     }
-    
+
+    private void OnDisable()
+    {
+        EventCenter.RemoveListener<Node>(EventType.PlayerFound, SetPlayerNode);
+        EventCenter.RemoveListener<Node, Vector2, float>(EventType.PlayerFoundPartly, SetPlayerNode);
+        EventCenter.RemoveListener(EventType.DoingMove, Move);
+        EventCenter.RemoveListener(EventType.RoundEnd, EndCheck);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
