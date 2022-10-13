@@ -61,12 +61,15 @@ public class Sniper : Role
                 lookAt = Vector2.up;
                 break;
             case 90:
+            case -270:
                 lookAt = Vector2.left;
                 break;
             case 180:
+            case -180:
                 lookAt = Vector2.down;
                 break;
             case 270:
+            case -90:
                 lookAt = Vector2.right;
                 break;
         }
@@ -98,9 +101,9 @@ public class Sniper : Role
             Debug.Log("enter");
             Node playerNow = col.GetComponent<Player>().NodePosition;
             if (NodePosition.position + Vector2.down == playerNow.position && (int)rotate.z == 0
-                || NodePosition.position + Vector2.up == playerNow.position && (int)rotate.z == 180
-                || NodePosition.position + Vector2.left == playerNow.position && (int)rotate.z == 270
-                || NodePosition.position + Vector2.right == playerNow.position && (int)rotate.z == 90)
+                || NodePosition.position + Vector2.up == playerNow.position && ((int)rotate.z == 180 || (int)rotate.z == -180)
+                || NodePosition.position + Vector2.left == playerNow.position && ((int)rotate.z == 270 || (int)rotate.z == -90)
+                || NodePosition.position + Vector2.right == playerNow.position && ((int)rotate.z == 90 || (int)rotate.z == -270))
             {
                 //狙击手死亡
                 Debug.Log("kill Sniper");
