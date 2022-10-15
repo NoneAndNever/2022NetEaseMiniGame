@@ -11,6 +11,8 @@ public class Role : MonoBehaviour
     protected Node PlayerNode { get; set; }//玩家节点
     public Node NodePosition { get; set; }//自身节点
     protected float moveTime = 0.3f;
+
+    [SerializeField] protected Animator _animator;
     
     protected readonly MovementCtrl MovementCtrl = MovementCtrl.GetInstance(); //移动控制器
     protected readonly AStarPathFinding PathFinding = AStarPathFinding.GetInstance();//A*地图
