@@ -73,7 +73,7 @@ public class EventCenter: BaseManager<EventCenter>
     /// </summary>
     /// <param name="eventEnum">移除函数正在监听的事件类型</param>
     /// <param name="callBack">希望移除的函数</param>
-    public void RemoveListener(EventType eventEnum, CallBack callBack)
+    public EventCenter RemoveListener(EventType eventEnum, CallBack callBack)
     {
         if (eventTable.ContainsKey(eventEnum))
         {
@@ -97,9 +97,10 @@ public class EventCenter: BaseManager<EventCenter>
         {
             eventTable.Remove(eventEnum);
         }
+        return this;
     }
     
-    public void RemoveListener<T>(EventType eventEnum, CallBack<T> callBack)
+    public EventCenter RemoveListener<T>(EventType eventEnum, CallBack<T> callBack)
     {
         if (eventTable.ContainsKey(eventEnum))
         {
@@ -122,9 +123,10 @@ public class EventCenter: BaseManager<EventCenter>
         {
             eventTable.Remove(eventEnum);
         }
+        return this;
     }
     
-    public void RemoveListener<T1, T2, T3>(EventType eventEnum, CallBack<T1, T2, T3> callBack)
+    public EventCenter RemoveListener<T1, T2, T3>(EventType eventEnum, CallBack<T1, T2, T3> callBack)
     {
         if (eventTable.ContainsKey(eventEnum))
         {
@@ -147,6 +149,7 @@ public class EventCenter: BaseManager<EventCenter>
         {
             eventTable.Remove(eventEnum);
         }
+        return this;
     }
     public EventCenter BroadcastEvent(EventType eventEnum)
     {
@@ -163,10 +166,10 @@ public class EventCenter: BaseManager<EventCenter>
         }
         return this;
     }
-    public void BroadcastEvent<T>(EventType eventEnum,T arg)
+    public EventCenter BroadcastEvent<T>(EventType eventEnum,T arg)
     {
         //如果对应的事件不存在监听委托，则返回
-        if (!eventTable.TryGetValue(eventEnum, out var d)) return;
+        if (!eventTable.TryGetValue(eventEnum, out var d)) return this;
         //如果委托事件符合委托类型，则调用委托
         if (d is CallBack<T> callBack)
         {
@@ -176,11 +179,12 @@ public class EventCenter: BaseManager<EventCenter>
         {
             throw new Exception($"广播事件错误：事件{eventEnum}有不同类型的委托");
         }
+        return this;
     }
-    public void BroadcastEvent<T1, T2, T3>(EventType eventEnum,T1 arg1, T2 arg2, T3 arg3)
+    public EventCenter BroadcastEvent<T1, T2, T3>(EventType eventEnum,T1 arg1, T2 arg2, T3 arg3)
     {
         //如果对应的事件不存在监听委托，则返回
-        if (!eventTable.TryGetValue(eventEnum, out var d)) return;
+        if (!eventTable.TryGetValue(eventEnum, out var d)) return this;
         //如果委托事件符合委托类型，则调用委托
         if (d is CallBack<T1,T2, T3> callBack)
         {
@@ -190,6 +194,7 @@ public class EventCenter: BaseManager<EventCenter>
         {
             throw new Exception($"广播事件错误：事件{eventEnum}有不同类型的委托");
         }
+        return this;
     }
     
 
