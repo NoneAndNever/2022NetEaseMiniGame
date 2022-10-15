@@ -97,10 +97,10 @@ public class Sniper : Role
         {
             Debug.Log("enter");
             Node playerNow = col.GetComponent<Player>().NodePosition;
-            if (NodePosition.position + Vector2.down == playerNow.position && (int)rotate.z == 0
-                || NodePosition.position + Vector2.up == playerNow.position && (int)rotate.z == 180
-                || NodePosition.position + Vector2.left == playerNow.position && (int)rotate.z == 270
-                || NodePosition.position + Vector2.right == playerNow.position && (int)rotate.z == 90)
+            if (NodePosition.position + Vector2.down == playerNow.position && ((int)rotate.z+360)%360 == 0
+                || NodePosition.position + Vector2.up == playerNow.position && ((int)rotate.z + 360) % 360 == 180
+                || NodePosition.position + Vector2.left == playerNow.position && ((int)rotate.z + 360) % 360 == 270
+                || NodePosition.position + Vector2.right == playerNow.position && ((int)rotate.z + 360) % 360 == 90)
             {
                 //狙击手死亡
                 Debug.Log("kill Sniper");
@@ -109,10 +109,10 @@ public class Sniper : Role
             //广播玩家位置
             else
             {
-                EventCenter.BroadcastEvent(EventType.PlayerFound, playerNow);
+                EventCenter.BroadcastEvent<Node, Vector2, float>(EventType.PlayerFoundPartly, playerNow, transform.position, 5f);
                 Debug.Log("broadcast");
             }
         }
-    }
-
+     }
+    
 }
