@@ -328,9 +328,9 @@ MonoBehaviour:
   m_Weight: 1
   m_SolverEditorData:
   - color: {r: 0, g: 1, b: 0, a: 1}
-    showGizmo: 1
+    showGizmo: 0
   - color: {r: 0, g: 1, b: 0, a: 1}
-    showGizmo: 1
+    showGizmo: 0
 --- !u!1001 &6908753028975722496
 PrefabInstance:
   m_ObjectHideFlags: 0
