@@ -49,9 +49,6 @@ public class Sniper : Role
         IsIdleDown,//站立_向下
         IsIdleHorizon,//站立_水平
         
-        //ShootUp,//射击_向上
-        //ShootDown,//射击_向下
-        //ShootHorizon,//射击_水平
         Shoot,
         Die//死亡
     }
@@ -60,6 +57,7 @@ public class Sniper : Role
         
     private static readonly int RotateDir = Animator.StringToHash("RotateDir");
     private static readonly int Shoot = Animator.StringToHash("Shoot");
+    private static readonly int Die = Animator.StringToHash("Die");
 
     /// <summary>
     /// 改变行动状态，同时播放动画
@@ -76,14 +74,11 @@ public class Sniper : Role
             case States.IsIdleHorizon:
                 _animator.SetInteger(RotateDir, (int)rotate.z);
                 break;
-            //case States.ShootUp:
-            //case States.ShootDown:
-            //case States.ShootHorizon:
             case States.Shoot:
-                Debug.Log("Shoot");
                 _animator.SetTrigger(Shoot);
                 break;
             case States.Die:
+                _animator.SetTrigger(Die);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(state), state, null);
@@ -214,7 +209,7 @@ public class Sniper : Role
                 //狙击手死亡
                 Debug.Log("kill Sniper");
                 player.ChangeState(Player.States.Attack);
-                gameObject.SetActive(false);
+                ChangeState(States.Die);
             }
             //广播玩家位置
             else
