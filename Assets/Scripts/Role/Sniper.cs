@@ -186,7 +186,7 @@ public class Sniper : Role
         if (hit)
         {
             ChangeState(States.Shoot);
-            hit.collider.gameObject.SetActive(false);
+            hit.collider.gameObject.GetComponent<Player>().ChangeState(Player.States.Die);
         }
     }
 
