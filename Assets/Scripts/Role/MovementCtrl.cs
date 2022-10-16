@@ -11,6 +11,10 @@ public class MovementCtrl: BaseManager<MovementCtrl>
 {
     public int RoundNum = 0;//回合数
 
+    private WaitForSeconds roundEnd = new WaitForSeconds(0.7f);
+    private WaitForSeconds roundBegin = new WaitForSeconds(0.1f);
+    private WaitForSeconds inRound = new WaitForSeconds(0.5f);
+
     public enum RoundState
     {
         RoundBegin,
@@ -22,19 +26,21 @@ public class MovementCtrl: BaseManager<MovementCtrl>
 
     private readonly EventCenter EventCenter = EventCenter.GetInstance();//广播事件管理器
 
-    public IEnumerator NextRoundState(float waitTime)
+    public IEnumerator NextRoundState()
     {
-        yield return new WaitForSeconds(waitTime);
         nowRoundState = (RoundState)(((int)nowRoundState + 1) % 3);
         switch (nowRoundState)
         {
             case RoundState.RoundBegin:
+                yield return roundEnd;
                 EventCenter.BroadcastEvent(EventType.RoundBegin);
                 break;
             case RoundState.InTheRound:
+                yield return roundBegin;
                 EventCenter.BroadcastEvent(EventType.DoingMove);
                 break;
             case RoundState.RoundEnd:
+                yield return inRound;
                 RoundNum++;
                 EventCenter.BroadcastEvent(EventType.RoundEnd);
                 break;

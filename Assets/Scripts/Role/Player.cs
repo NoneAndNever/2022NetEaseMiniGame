@@ -208,7 +208,7 @@ public class Player : Role
             {
                 nextNode = tempNode;
                 RoundStart = false;
-                StartCoroutine(MovementCtrl.NextRoundState(0.1f));
+                StartCoroutine(MovementCtrl.NextRoundState());
             }
             else
             {
@@ -231,7 +231,7 @@ public class Player : Role
         CancelInstructions();
 
         fatherTrans.DOMove(nextNode.position, moveTime);
-        StartCoroutine(MovementCtrl.NextRoundState(0.5f));
+        StartCoroutine(MovementCtrl.NextRoundState());
         
     }
 
@@ -246,7 +246,7 @@ public class Player : Role
         nowState = States.IsIdle;
         ChangeState(nowState);
     
-        StartCoroutine(MovementCtrl.NextRoundState(0.7f));
+        StartCoroutine(MovementCtrl.NextRoundState());
     }
 
     /// <summary>
