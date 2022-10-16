@@ -12,6 +12,8 @@ public class Player : Role
     [SerializeField] private Transform fatherTrans;//父物体
     private readonly Vector3 turnLeft = new Vector3(0, 180, 0);
     private readonly Vector3 turnRight = Vector3.zero;
+
+    private bool RoundStart = true;
     
     #region 节点
 
@@ -144,6 +146,8 @@ public class Player : Role
     private void Awake()
     {
         EventCenter.AddListener(EventType.DoingMove, Move);
+        EventCenter.AddListener(EventType.RoundBegin, BeginCheck);
+        EventCenter.AddListener(EventType.RoundEnd, EndCheck);
     }
 
     // Start is called before the first frame update
@@ -166,7 +170,7 @@ public class Player : Role
     void Update()
     {
         //当角色不在移时，进行位移动画插值
-        if (!MovementCtrl.IsMoving)
+        if (RoundStart)
         {
 
             if (Input.GetKeyDown(KeyCode.W)) MoveCheck(Direction.Up);
@@ -182,37 +186,6 @@ public class Player : Role
     }
 
     #endregion
-
-
-    /// <summary>
-    /// 移动
-    /// </summary>
-    public override void Move()
-    {
-        if (selectedDirection == Direction.Left) transform.eulerAngles = turnLeft;
-        else if (selectedDirection == Direction.Right) transform.eulerAngles = turnRight;
-        
-        nowState = States.IsMove;
-        ChangeState(nowState);
-        CancelInstructions();
-        
-        fatherTrans.DOMove(nextNode.position, moveTime).OnComplete(delegate
-        {
-            //锁定移动状态
-            MovementCtrl.IsMoving = false;
-            //更新玩家的地图点
-            NodePosition = nextNode;
-            //回合数+1
-            MovementCtrl.RoundNum++;
-            
-            CheckInstructions();
-            
-            EventCenter.BroadcastEvent(EventType.RoundEnd);
-            nowState = States.IsIdle;
-            ChangeState(nowState);
-            EventCenter.BroadcastEvent(EventType.RoundBegin);
-        });
-    }
 
     /// <summary>
     /// 移动检测，不可到达障碍物点
@@ -234,7 +207,8 @@ public class Player : Role
             if (direction == selectedDirection)
             {
                 nextNode = tempNode;
-                MovementCtrl.Moving();
+                RoundStart = false;
+                StartCoroutine(MovementCtrl.NextRoundState(0.1f));
             }
             else
             {
@@ -244,4 +218,43 @@ public class Player : Role
         }
     }
 
+    /// <summary>
+    /// 移动
+    /// </summary>
+    public override void Move()
+    {
+        if (selectedDirection == Direction.Left) transform.eulerAngles = turnLeft;
+        else if (selectedDirection == Direction.Right) transform.eulerAngles = turnRight;
+        
+        nowState = States.IsMove;
+        ChangeState(nowState);
+        CancelInstructions();
+
+        fatherTrans.DOMove(nextNode.position, moveTime);
+        StartCoroutine(MovementCtrl.NextRoundState(0.5f));
+        
+    }
+
+    /// <summary>
+    /// 回合末检测
+    /// </summary>
+    public void EndCheck()
+    {
+        //更新玩家的地图点
+        NodePosition = nextNode;
+    
+        nowState = States.IsIdle;
+        ChangeState(nowState);
+    
+        StartCoroutine(MovementCtrl.NextRoundState(0.7f));
+    }
+
+    /// <summary>
+    /// 回合初检测
+    /// </summary>
+    public void BeginCheck()
+    {
+        CheckInstructions();
+        RoundStart = true;
+    }
 }
