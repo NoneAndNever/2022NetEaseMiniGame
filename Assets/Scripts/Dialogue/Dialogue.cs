@@ -9,19 +9,19 @@ public class Dialogue
     public Dialogue(int index, string person, string dialogueText)
     {
         this.index = index;
-        this.nameText = person;
         this.person = Enum.Parse<Person>(person);
         this.dialogueText = dialogueText;
     }
+
     public enum Person
     {
         Eve,
-        Cosette
+        Cosette,
+        End
     }
-    public Person person;
-    //public int face;
+    
     public int index;
-    public string nameText;
+    public Person person;
     public string dialogueText;
     
 }
