@@ -35,7 +35,6 @@ public class Scout : Role
     private static readonly int IsIdle = Animator.StringToHash("IsIdle");
     private static readonly int IsMove = Animator.StringToHash("IsMove");
     private static readonly int Detect = Animator.StringToHash("Detect");
-    //private static readonly int Die = Animator.StringToHash("Die");
 
     /// <summary>
     /// 改变行动状态，同时播放动画
@@ -59,9 +58,6 @@ public class Scout : Role
             case States.Detect:
                 _animator.SetTrigger(Detect);
                 break;
-            /*case States.Die:
-                _animator.SetTrigger(Die);
-                break;*/
             default:
                 throw new ArgumentOutOfRangeException(nameof(state), state, null);
         }

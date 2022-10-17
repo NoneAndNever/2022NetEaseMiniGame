@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -7,33 +9,41 @@ using UnityEngine;
 /// </summary>
 public class MovementCtrl: BaseManager<MovementCtrl>
 {
-
-    public bool IsMoving;//移动状态
     public int RoundNum = 0;//回合数
+
+    private WaitForSeconds roundEnd = new WaitForSeconds(0.7f);
+    private WaitForSeconds roundBegin = new WaitForSeconds(0.1f);
+    private WaitForSeconds inRound = new WaitForSeconds(0.5f);
+
+    public enum RoundState
+    {
+        RoundBegin,
+        InTheRound,
+        RoundEnd
+    }
+
+    public RoundState nowRoundState = RoundState.RoundBegin;
 
     private readonly EventCenter EventCenter = EventCenter.GetInstance();//广播事件管理器
 
-
-    
-    /// <summary>
-    /// 角色与敌人的移动
-    /// </summary>
-    public void Moving()
+    public IEnumerator NextRoundState()
     {
-        if (!IsMoving)
+        nowRoundState = (RoundState)(((int)nowRoundState + 1) % 3);
+        switch (nowRoundState)
         {
-            //所有单位进行移动
-            EventCenter.BroadcastEvent(EventType.DoingMove);
-            //锁定移动状态
-            IsMoving = true;
+            case RoundState.RoundBegin:
+                yield return roundEnd;
+                EventCenter.BroadcastEvent(EventType.RoundBegin);
+                break;
+            case RoundState.InTheRound:
+                yield return roundBegin;
+                EventCenter.BroadcastEvent(EventType.DoingMove);
+                break;
+            case RoundState.RoundEnd:
+                yield return inRound;
+                RoundNum++;
+                EventCenter.BroadcastEvent(EventType.RoundEnd);
+                break;
         }
-    }
-
-    /// <summary>
-    /// 重置移动条件
-    /// </summary>
-    private void Reset()
-    {
-        IsMoving = false;
     }
 }
