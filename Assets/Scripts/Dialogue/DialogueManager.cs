@@ -32,14 +32,20 @@ public class DialogueManager : SingletonMono<DialogueManager>
     private void ShowText()
     {
         currentLine++;
-        if (currentLine>dialogues.Count)
+        if (dialogues[currentLine].person==Dialogue.Person.End)
         {
-            
+            ClosePanel();
         }
         nameLabel.text = dialogues[currentLine].person.ToString();
         dialText.text = dialogues[currentLine].dialogueText;
     }
-    
+
+    private void ClosePanel()
+    {
+        throw new NotImplementedException();
+    }
+
+    /*
     private void InitialText(string fileName)
     {
         Resources.Load<TextAsset>(fileName);
@@ -51,6 +57,19 @@ public class DialogueManager : SingletonMono<DialogueManager>
             infos = dials[i].Split(',');
             if (infos[0]== "End") continue;
             dialogues.Add(new Dialogue(i,infos[0],infos[1]));
+        }
+    }
+    */
+
+    private void InitTextAsset(TextAsset textFile)
+    {
+        dialogues.Clear();
+        string[] rows=textAsset.text.Split("\r\n");
+        string[] columns;
+        for (int i = 0; i < rows.Length-1; i++)
+        {
+            columns = rows[i].Split(',');
+            dialogues.Add(new Dialogue(i,columns[0],columns[1]));
         }
     }
     
