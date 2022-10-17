@@ -223,8 +223,8 @@ public class Player : Role
     /// </summary>
     public override void Move()
     {
-        if (selectedDirection == Direction.Left) transform.eulerAngles = turnLeft;
-        else if (selectedDirection == Direction.Right) transform.eulerAngles = turnRight;
+        if (selectedDirection == Direction.Left) transform.localEulerAngles = turnLeft;
+        else if (selectedDirection == Direction.Right) transform.localEulerAngles = turnRight;
         
         nowState = States.IsMove;
         ChangeState(nowState);

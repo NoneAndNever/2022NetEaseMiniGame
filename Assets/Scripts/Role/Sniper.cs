@@ -15,6 +15,8 @@ public class Sniper : Role
 
     private Vector3 leftCircular = new Vector3(-1, 1, 1);
     private Vector3 rightCircular = new Vector3(1, 1, 1);
+
+    [SerializeField] private Transform rangeInstruction;
     
     #region 初始设置
 
@@ -35,7 +37,7 @@ public class Sniper : Role
     }
     
     //当前狙击手的旋转方向
-    private Vector3 rotate = new Vector3(0, 0, 0);
+    private Vector3 rotate;
     [SerializeField] private RotateDirection direction = RotateDirection.Positive;    
     [SerializeField] private InitialAngel initialAngel = InitialAngel.Right;    
 
@@ -91,10 +93,14 @@ public class Sniper : Role
 
     private void Awake()
     {
-        rotate.z = transform.rotation.eulerAngles.z;
+        rotate = rangeInstruction.eulerAngles;
+        rotate.z = (int)initialAngel;
+        rangeInstruction.eulerAngles = rotate;
+        
         EventCenter
             .AddListener(EventType.DoingMove, Move)
-            .AddListener(EventType.RoundEnd, EndCheck);
+            .AddListener(EventType.RoundEnd, EndCheck)
+            .AddListener(EventType.RoundBegin, BeginCheck);
     }
 
 
@@ -103,7 +109,7 @@ public class Sniper : Role
     {
         var position = transform.position;
         NodePosition = PathFinding.GetGraphNode((int)position.x, (int)position.y);
-        rotate.z = (int)initialAngel;
+        //rotate.z = (int)initialAngel;
         nowState = rotate.z switch
         {
             0 => States.IsIdleUp,
@@ -142,7 +148,9 @@ public class Sniper : Role
     /// </summary>
     public override void Move()
     {
+        
         rotate.z = (rotate.z + 90 * (int)direction + 360) % 360;
+        
         transform.localScale = rotate.z > 180
                                || (direction == RotateDirection.Positive && rotate.z == 0)
                                || (direction == RotateDirection.Negative && rotate.z == 180)
@@ -156,10 +164,16 @@ public class Sniper : Role
             _ => States.Die
         };
         ChangeState(nowState);
+        rangeInstruction.DORotate(rotate, moveTime);
     }
 
 
     #region 回合检测与碰撞体检测
+
+    private void BeginCheck()
+    {
+        //if (MovementCtrl.RoundNum > 0)
+    }
 
     /// <summary>
     /// 回合末检查
@@ -196,9 +210,10 @@ public class Sniper : Role
     /// <param name="col"></param>
     private void OnTriggerEnter2D(Collider2D col)
     {
+        
         if (col.CompareTag("Player"))
         {
-            Debug.Log("enter");
+            Debug.Log("PlayerEnter");
             Player player = col.GetComponent<Player>();
             Node playerNow = player.NodePosition;
             if (NodePosition.position + Vector2.down == playerNow.position && (int)rotate.z == 0
@@ -207,7 +222,6 @@ public class Sniper : Role
                 || NodePosition.position + Vector2.right == playerNow.position && (int)rotate.z == 90)
             {
                 //狙击手死亡
-                Debug.Log("kill Sniper");
                 player.ChangeState(Player.States.Attack);
                 ChangeState(States.Die);
             }
