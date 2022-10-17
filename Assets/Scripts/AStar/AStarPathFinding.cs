@@ -53,6 +53,7 @@ public class AStarPathFinding : BaseManager<AStarPathFinding>
     /// <returns></returns>
     public Stack<Node> FindPath([CanBeNull] Node startNode, [CanBeNull] Node targetNode, bool count)
     {
+        if (startNode == targetNode) return null;
 
         //搜索目标节点列表
         List<Node> toSearch = new List<Node>() { startNode };
