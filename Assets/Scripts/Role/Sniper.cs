@@ -81,6 +81,7 @@ public class Sniper : Role
                 break;
             case States.Die:
                 _animator.SetTrigger(Die);
+                nowState = States.Die;
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(state), state, null);
@@ -180,28 +181,32 @@ public class Sniper : Role
     /// </summary>
     private void EndCheck()
     {
-        Vector2 lookAt = Vector2.zero;
-        switch (rotate.z)
+        if (nowState != States.Die)
         {
-            case 0:
-                lookAt = Vector2.up;
-                break;
-            case 90:
-                lookAt = Vector2.left;
-                break;
-            case 180:
-                lookAt = Vector2.down;
-                break;
-            case 270:
-                lookAt = Vector2.right;
-                break;
+            Vector2 lookAt = Vector2.zero;
+            switch (rotate.z)
+            {
+                case 0:
+                    lookAt = Vector2.up;
+                    break;
+                case 90:
+                    lookAt = Vector2.left;
+                    break;
+                case 180:
+                    lookAt = Vector2.down;
+                    break;
+                case 270:
+                    lookAt = Vector2.right;
+                    break;
+            }
+            RaycastHit2D hit = Physics2D.Raycast(NodePosition.position, lookAt, 2f, 1 << 6);
+            if (hit)
+            {
+                ChangeState(States.Shoot);
+                hit.collider.gameObject.GetComponent<Player>().ChangeState(Player.States.Die);
+            }
         }
-        RaycastHit2D hit = Physics2D.Raycast(NodePosition.position + lookAt * 0.5f, lookAt, 2f, 1 << 6);
-        if (hit)
-        {
-            ChangeState(States.Shoot);
-            hit.collider.gameObject.GetComponent<Player>().ChangeState(Player.States.Die);
-        }
+
     }
 
     /// <summary>
@@ -216,6 +221,7 @@ public class Sniper : Role
             Debug.Log("PlayerEnter");
             Player player = col.GetComponent<Player>();
             Node playerNow = player.NodePosition;
+            Node playerNext = player.nextNode;
             if (NodePosition.position + Vector2.down == playerNow.position && (int)rotate.z == 0
                 || NodePosition.position + Vector2.up == playerNow.position && (int)rotate.z == 180
                 || NodePosition.position + Vector2.left == playerNow.position && (int)rotate.z == 270
@@ -228,8 +234,8 @@ public class Sniper : Role
             //广播玩家位置
             else
             {
-                EventCenter.BroadcastEvent(EventType.PlayerFound, playerNow);
-                Debug.Log("broadcast");
+                EventCenter.BroadcastEvent(EventType.PlayerFound, PlayerNode);
+                Debug.Log("broadcast" + playerNext.position);
             }
         }
     }

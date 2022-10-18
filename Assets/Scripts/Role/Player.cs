@@ -132,6 +132,7 @@ public class Player : Role
                 break;
             case States.Die:
                 _animator.SetTrigger(Die);
+                nowState = States.Die;
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(state), state, null);
@@ -242,9 +243,12 @@ public class Player : Role
     {
         //更新玩家的地图点
         NodePosition = nextNode;
-    
-        nowState = States.IsIdle;
-        ChangeState(nowState);
+
+        if (nowState != States.Die)
+        {
+            nowState = States.IsIdle;
+            ChangeState(nowState);
+        }
     
         StartCoroutine(MovementCtrl.NextRoundState());
     }
@@ -254,7 +258,10 @@ public class Player : Role
     /// </summary>
     public void BeginCheck()
     {
-        CheckInstructions();
-        RoundStart = true;
+        if (nowState != States.Die)
+        {
+            CheckInstructions();
+            RoundStart = true;
+        }
     }
 }

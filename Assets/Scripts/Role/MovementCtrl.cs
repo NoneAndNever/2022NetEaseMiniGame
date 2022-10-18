@@ -11,9 +11,9 @@ public class MovementCtrl: BaseManager<MovementCtrl>
 {
     public int RoundNum = 0;//回合数
 
-    private WaitForSeconds roundEnd = new WaitForSeconds(0.7f);
+    private WaitForSeconds roundEnd = new WaitForSeconds(0.3f);
     private WaitForSeconds roundBegin = new WaitForSeconds(0.1f);
-    private WaitForSeconds inRound = new WaitForSeconds(0.5f);
+    private WaitForSeconds inRound = new WaitForSeconds(0.4f);
 
     public enum RoundState
     {
