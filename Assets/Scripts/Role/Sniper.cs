@@ -10,8 +10,16 @@ using UnityEngine.UIElements;
 /// <summary>
 /// 狙击手
 /// </summary>
-public class Sniper : Role
+public class Sniper : Role, IDataPersistence
 {
+    
+    [SerializeField] private string id;
+
+    [ContextMenu("Generate guid for id")]
+    private void GenerateGuid() 
+    {
+        id = System.Guid.NewGuid().ToString();
+    }
 
     private Vector3 leftCircular = new Vector3(-1, 1, 1);
     private Vector3 rightCircular = new Vector3(1, 1, 1);
@@ -92,13 +100,10 @@ public class Sniper : Role
 
     #region 生命周期
 
-    private void Awake()
+    protected override void Awake()
     {
-        rotate = rangeInstruction.eulerAngles;
-        rotate.z = (int)initialAngel;
-        rangeInstruction.eulerAngles = rotate;
-        
-        EventCenter
+        base.Awake();
+        EventCenter.GetInstance()
             .AddListener(EventType.DoingMove, Move)
             .AddListener(EventType.RoundEnd, EndCheck)
             .AddListener(EventType.RoundBegin, BeginCheck);
@@ -108,9 +113,12 @@ public class Sniper : Role
     // Start is called before the first frame update
     void Start()
     {
+        rotate = rangeInstruction.eulerAngles;
+        rotate.z = (int)initialAngel;
+        rangeInstruction.eulerAngles = rotate;
+
         var position = transform.position;
-        NodePosition = PathFinding.GetGraphNode((int)position.x, (int)position.y);
-        //rotate.z = (int)initialAngel;
+        NodePosition = AStarPathFinding.GetInstance().GetGraphNode((int)position.x, (int)position.y);
         nowState = rotate.z switch
         {
             0 => States.IsIdleUp,
@@ -136,7 +144,7 @@ public class Sniper : Role
 
     private void OnDisable()
     {
-        EventCenter
+        EventCenter.GetInstance()
             .RemoveListener(EventType.DoingMove, Move)
             .RemoveListener(EventType.RoundEnd, EndCheck);
     }
@@ -234,11 +242,62 @@ public class Sniper : Role
             //广播玩家位置
             else
             {
-                EventCenter.BroadcastEvent(EventType.PlayerFound, PlayerNode);
+                EventCenter.GetInstance().BroadcastEvent(EventType.PlayerFound, PlayerNode);
                 Debug.Log("broadcast" + playerNext.position);
             }
         }
     }
     
     #endregion
+    
+    public void LoadData(GameData data)
+    {
+        data.sniperAlive.TryGetValue(id, out var isAlive);
+        switch (isAlive)
+        {
+            case false:
+                gameObject.SetActive(false);
+                break;
+            case true:
+                gameObject.SetActive(true);
+                break;
+        }
+
+        data.sniperRotate.TryGetValue(id, out var rot);
+        rotate = rot;
+        
+        nowState = rotate.z switch
+        {
+            0 => States.IsIdleUp,
+            90 => States.IsIdleHorizon,
+            270 => States.IsIdleHorizon,
+            180 => States.IsIdleDown,
+            _ => States.Die
+        };
+        
+        transform.localScale = rotate.z > 180
+                               || (direction == RotateDirection.Positive && rotate.z == 0)
+                               || (direction == RotateDirection.Negative && rotate.z == 180)
+            ? rightCircular : leftCircular;
+        ChangeState(nowState);
+        
+        rangeInstruction.eulerAngles = rotate;
+
+    }
+
+    public void SaveData(GameData data)
+    {
+        if (data.sniperAlive.ContainsKey(id))
+        {
+            
+            data.sniperAlive.Remove(id);
+        }
+        data.sniperAlive.Add(id, nowState != States.Die);
+
+        if (data.sniperRotate.ContainsKey(id))
+        {
+            data.sniperRotate.Remove(id);
+        }
+        data.sniperRotate.Add(id, rotate);
+    }
 }
