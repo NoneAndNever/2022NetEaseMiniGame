@@ -33,6 +33,13 @@ public class DataPersistenceManager : SingletonMono<DataPersistenceManager>
     public void NewGame() 
     {
         gameData = new GameData();
+        
+        foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
+        {
+            dataPersistenceObj.SaveData(gameData);
+        }
+
+        dataHandler.Save(gameData);
     }
 
     public void LoadGame()
