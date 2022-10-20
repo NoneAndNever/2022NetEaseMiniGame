@@ -15,31 +15,10 @@ public class Role : MonoBehaviour
 
     [SerializeField] protected Animator _animator;
 
-    //protected static MovementCtrl MovementCtrl;
-    //protected static AStarPathFinding PathFinding;
-    //protected static EventCenter EventCenter;
 
 
     #endregion
 
-    protected virtual void Awake()
-    {
-        //MovementCtrl = MovementCtrl ? MovementCtrl : MovementCtrl.GetInstance(); //移动控制器
-        //PathFinding = PathFinding??AStarPathFinding.GetInstance();//A*地图
-        //EventCenter = EventCenter??EventCenter.GetInstance();//广播事件管理器
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public virtual void Move()
     {

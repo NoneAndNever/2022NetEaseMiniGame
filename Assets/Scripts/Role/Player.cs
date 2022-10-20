@@ -147,9 +147,8 @@ public class Player : Role, IDataPersistence
 
     #region 生命周期
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
         EventCenter.GetInstance().AddListener(EventType.DoingMove, Move)
             .AddListener(EventType.RoundBegin, BeginCheck)
             .AddListener(EventType.RoundEnd, EndCheck);
