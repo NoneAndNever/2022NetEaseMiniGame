@@ -7,11 +7,12 @@ using DG.Tweening;
 /// <summary>
 /// 玩家
 /// </summary>
-public class Player : Role
+public class Player : Role, IDataPersistence
 {
     [SerializeField] private Transform fatherTrans;//父物体
     private readonly Vector3 turnLeft = new Vector3(0, 180, 0);
     private readonly Vector3 turnRight = Vector3.zero;
+    private Node rebornNode;
 
     private bool RoundStart = true;
     
@@ -19,10 +20,10 @@ public class Player : Role
 
     public Node nextNode;
 
-    private Node UpNode => PathFinding.GetGraphNode(NodePosition.x, NodePosition.y + 1);
-    private Node DownNode => PathFinding.GetGraphNode(NodePosition.x, NodePosition.y - 1);
-    private Node RightNode => PathFinding.GetGraphNode(NodePosition.x + 1, NodePosition.y);
-    private Node LeftNode =>PathFinding.GetGraphNode(NodePosition.x - 1, NodePosition.y);
+    private Node UpNode => AStarPathFinding.GetInstance().GetGraphNode(NodePosition.x, NodePosition.y + 1);
+    private Node DownNode => AStarPathFinding.GetInstance().GetGraphNode(NodePosition.x, NodePosition.y - 1);
+    private Node RightNode => AStarPathFinding.GetInstance().GetGraphNode(NodePosition.x + 1, NodePosition.y);
+    private Node LeftNode =>AStarPathFinding.GetInstance().GetGraphNode(NodePosition.x - 1, NodePosition.y);
 
     private Node tempNode;
 
@@ -131,7 +132,10 @@ public class Player : Role
                 _animator.SetTrigger(Attack);
                 break;
             case States.Die:
+                _animator.SetBool(IsIdle, false);
+                _animator.SetBool(IsMove, false);
                 _animator.SetTrigger(Die);
+                nowState = States.Die;
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(state), state, null);
@@ -143,18 +147,20 @@ public class Player : Role
 
     #region 生命周期
 
-    private void Awake()
+    protected override void Awake()
     {
-        EventCenter.AddListener(EventType.DoingMove, Move);
-        EventCenter.AddListener(EventType.RoundBegin, BeginCheck);
-        EventCenter.AddListener(EventType.RoundEnd, EndCheck);
+        base.Awake();
+        EventCenter.GetInstance().AddListener(EventType.DoingMove, Move)
+            .AddListener(EventType.RoundBegin, BeginCheck)
+            .AddListener(EventType.RoundEnd, EndCheck);
     }
 
+   
     // Start is called before the first frame update
     void Start()
     {
         var position = fatherTrans.position;
-        NodePosition = PathFinding.GetGraphNode((int)position.x, (int)position.y);
+        NodePosition = AStarPathFinding.GetInstance().GetGraphNode((int)position.x, (int)position.y);
         
         instructionSprites.Add(Direction.Up, upInstruction.GetComponent<SpriteRenderer>());
         instructionSprites.Add(Direction.Down, downInstruction.GetComponent<SpriteRenderer>());
@@ -208,7 +214,7 @@ public class Player : Role
             {
                 nextNode = tempNode;
                 RoundStart = false;
-                StartCoroutine(MovementCtrl.NextRoundState());
+                StartCoroutine(MovementCtrl.GetInstance().NextRoundState());
             }
             else
             {
@@ -231,30 +237,47 @@ public class Player : Role
         CancelInstructions();
 
         fatherTrans.DOMove(nextNode.position, moveTime);
-        StartCoroutine(MovementCtrl.NextRoundState());
+        StartCoroutine(MovementCtrl.GetInstance().NextRoundState());
         
     }
 
     /// <summary>
     /// 回合末检测
     /// </summary>
-    public void EndCheck()
+    private void EndCheck()
     {
         //更新玩家的地图点
         NodePosition = nextNode;
+
+        if (nowState != States.Die)
+        {
+            nowState = States.IsIdle;
+            ChangeState(nowState);
+        }
     
-        nowState = States.IsIdle;
-        ChangeState(nowState);
-    
-        StartCoroutine(MovementCtrl.NextRoundState());
+        StartCoroutine(MovementCtrl.GetInstance().NextRoundState());
     }
 
     /// <summary>
     /// 回合初检测
     /// </summary>
-    public void BeginCheck()
+    private void BeginCheck()
     {
         CheckInstructions();
         RoundStart = true;
+    }
+
+    public void LoadData(GameData data)
+    {
+        NodePosition = AStarPathFinding.GetInstance().GetGraphNode((int)data.PlayerNode.x, (int)data.PlayerNode.y);
+        fatherTrans.position = NodePosition.position;
+        nowState = States.IsIdle;
+        ChangeState(States.IsIdle);
+        BeginCheck();
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.PlayerNode = new Vector2(NodePosition.x, NodePosition.y);
     }
 }

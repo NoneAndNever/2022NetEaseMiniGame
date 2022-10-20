@@ -104,4 +104,5 @@ public class Node
     {
         return (foundPosition - position).sqrMagnitude;
     }
+    
 }

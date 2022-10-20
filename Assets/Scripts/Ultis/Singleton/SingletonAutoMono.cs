@@ -10,14 +10,14 @@ public class SingletonAutoMono<T> : MonoBehaviour where T : MonoBehaviour
 {
     private static T instance;
 
-    protected virtual void Awake()
+    /*protected virtual void Awake()
     {
         if (GetInstance()!=this)
         {
             Destroy(this);
         }
         else DontDestroyOnLoad(this);
-    }
+    }*/
 
     public static T GetInstance()
     {

@@ -25,18 +25,18 @@ public class Helicopter : Role
     
     private void Awake()
     {
-        EventCenter.AddListener<Node>(EventType.PlayerFound, SetPlayerNode);
-        EventCenter.AddListener<Node, Vector2, float>(EventType.PlayerFoundPartly, SetPlayerNode);
-        EventCenter.AddListener(EventType.DoingMove, Move);
-        EventCenter.AddListener(EventType.RoundEnd, EndCheck);
-        EventCenter.AddListener(EventType.RoundBegin, BeginCheck);
+        EventCenter.GetInstance().AddListener<Node>(EventType.PlayerFound, SetPlayerNode)
+            .AddListener<Node, Vector2, float>(EventType.PlayerFoundPartly, SetPlayerNode)
+            .AddListener(EventType.DoingMove, Move)
+            .AddListener(EventType.RoundEnd, EndCheck)
+            .AddListener(EventType.RoundBegin, BeginCheck);
     }
 
     // Start is called before the first frame update
     void Start()
     {
         var position = transform.position;
-        NodePosition = PathFinding.GetGraphNode((int)position.x, (int)position.y);
+        NodePosition = AStarPathFinding.GetInstance().GetGraphNode((int)position.x, (int)position.y);
         _targetPos = NodePosition.position;
 
         tiling = new Vector2(20, 0);
@@ -87,7 +87,7 @@ public class Helicopter : Role
     /// </summary>
     private void EndCheck()
     {
-        if (MovementCtrl.RoundNum % 2 == 0)
+        /*if (MovementCtrl.GetInstance().RoundNum % 2 == 0)
         {
                 var col = Physics2D.OverlapCircle(transform.position, scanRadius, 1 << 6);
                 if (col)
@@ -95,10 +95,10 @@ public class Helicopter : Role
                     Debug.Log("enter");
                     Node playerNow = col.GetComponent<Player>().NodePosition;
                     //广播玩家位置
-                    EventCenter.BroadcastEvent<Node,Vector2,float>(EventType.PlayerFoundPartly, playerNow, transform.position, 3f);
+                    EventCenter.GetInstance().BroadcastEvent<Node,Vector2,float>(EventType.PlayerFoundPartly, playerNow, transform.position, 3f);
                     Debug.Log("broadcast");
                 }
-        }
+        }*/
 
     }
     

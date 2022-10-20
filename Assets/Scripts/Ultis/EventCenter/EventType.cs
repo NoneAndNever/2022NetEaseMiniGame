@@ -4,5 +4,6 @@
     PlayerFoundPartly,
     DoingMove,
     RoundEnd,
-    RoundBegin
+    RoundBegin,
+    Save
 }
