@@ -2,12 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using JetBrains.Annotations;
 using UnityEngine;
 
 /// <summary>
 /// 移动控制器
 /// </summary>
-public class MovementCtrl: SingletonMono<MovementCtrl>, IDataPersistence
+public class RoundCtrl: SingletonMono<RoundCtrl>, IDataPersistence
 {
     public int RoundNum = 0;//回合数
 
@@ -21,14 +22,14 @@ public class MovementCtrl: SingletonMono<MovementCtrl>, IDataPersistence
         RoundBegin,
         InTheRound,
         RoundEnd,
-        Save
+        Extra
     }
 
     private RoundState nowRoundState = RoundState.RoundBegin;
 
     //private readonly EventCenter EventCenter = EventCenter.GetInstance();//广播事件管理器
 
-    public IEnumerator NextRoundState()
+    public IEnumerator NextRoundState([CanBeNull] Node playerNode)
     {
         nowRoundState = (RoundState)(((int)nowRoundState + 1) % 4);
         switch (nowRoundState)
@@ -46,13 +47,14 @@ public class MovementCtrl: SingletonMono<MovementCtrl>, IDataPersistence
                 RoundNum++;
                 EventCenter.GetInstance().BroadcastEvent(EventType.RoundEnd);
                 break;
-            case RoundState.Save:
+            case RoundState.Extra:
                 yield return roundEnd;
-                EventCenter.GetInstance().BroadcastEvent(EventType.Save);
+                EventCenter.GetInstance().BroadcastEvent<Node>(EventType.Extra, playerNode);
                 break;
         }
     }
 
+    
 
     public void LoadData(GameData data)
     {

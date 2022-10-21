@@ -19,6 +19,8 @@ public class Node
     private readonly List<Node> fourNeighbors = new List<Node>(4);
     private readonly List<Node> eightNeighbors = new List<Node>(8);
     public Node Connection;
+    public int number = 0;
+    
     //起点到当前点所需的步数
     public int G;
     //当前点到终点的最短步数

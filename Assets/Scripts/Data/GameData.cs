@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class GameData
 
     public SerializableDictionary<string, Vector2> scoutNodePosition;//侦察兵的位置
     public SerializableDictionary<string, Vector2> scoutTargetPosition;//侦察兵的目标位置
+    public SerializableDictionary<string, int> scoutNumber;
 
     // the values defined in this constructor will be the default values
     // the game starts with when there's no data to load
@@ -25,5 +27,6 @@ public class GameData
         sniperRotate = new SerializableDictionary<string, Vector3>();
         scoutNodePosition = new SerializableDictionary<string, Vector2>();
         scoutTargetPosition = new SerializableDictionary<string, Vector2>();
+        scoutNumber = new SerializableDictionary<string, int>();
     }
 }

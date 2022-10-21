@@ -14,6 +14,9 @@ public class AStarPathFinding : BaseManager<AStarPathFinding>
     private List<Node> _obstacles;
     private Vector2 _begin;
 
+    private Node transverseNode;//横向的节点
+    private Node verticalNode;//纵向的节点
+
     /// <summary>
     /// 初始化地图点
     /// </summary>
@@ -51,7 +54,7 @@ public class AStarPathFinding : BaseManager<AStarPathFinding>
     /// <param name="startNode">起点</param>
     /// <param name="targetNode">目标点</param>
     /// <returns></returns>
-    public Stack<Node> FindPath([CanBeNull] Node startNode, [CanBeNull] Node targetNode, bool count)
+    public Stack<Node> FindPath([CanBeNull] Node startNode, [CanBeNull] Node targetNode, int number)
     {
         if (startNode == targetNode) return null;
 
@@ -67,46 +70,26 @@ public class AStarPathFinding : BaseManager<AStarPathFinding>
             Node current = toSearch[0];
             foreach (Node t in toSearch)
             {
-                //current节点与目标节点构成的矩形的边长差
-                int currentRoadDifference =
-                    Mathf.Abs(Mathf.Abs(current.x - targetNode.x) - Mathf.Abs(current.y - targetNode.y));
-                //t节点与目标节点构成的矩形的边长差
-                int tRoadDifference = Mathf.Abs(Mathf.Abs(t.x - targetNode.x) - Mathf.Abs(t.y - targetNode.y));
-                //判断该走哪一个邻居节点
-                if (t.F < current.F
-                    //当期望最短距离相等时，判断两个节点与目标节点间的直线距离
-                    || t.F == current.F && t.H < current.H
-                    || t.F == current.F && t.H == current.H && currentRoadDifference >= tRoadDifference)
-                    //判断矩形边长差（选择差值更小的那个节点，表示沿最长边走）
+                if (t == current || t.F >= current.F && (t.F != current.F || t.H > current.H)) continue;
+
+                if (t.F < current.F || t.H < current.H) current = t;
+                else
                 {
+                    
+                    transverseNode = Mathf.Abs(targetNode.y - current.y) < Mathf.Abs(targetNode.y - t.y) ? t : current;
+                    verticalNode = transverseNode == t ? current : t;
+                    int transverseDifference = Mathf.Abs(transverseNode.x - transverseNode.y);
+                    int verticalDifference = Mathf.Abs(verticalNode.x - verticalNode.y);
+                    
+                    if (transverseDifference != verticalDifference)
+                        current = transverseDifference < verticalDifference ? transverseNode : verticalNode;
+                    else if (transverseDifference == verticalDifference)
+                        current = transverseNode.y > targetNode.y ? verticalNode : transverseNode;
 
-                    //当由正方形变形成矩形时（currentRoadDifference == tRoadDifference）进行判断
-                    if (t != current && t.F == current.F && t.H == current.H && currentRoadDifference == tRoadDifference)
-                    {
-                        //当正方形边长大于1时
-                        if ((Mathf.Abs(t.y - targetNode.y) > 1) || (Mathf.Abs(t.x - targetNode.x) > 1))
-                        {
-                            //目标节点在下方的情况
-                            if ((t.y > targetNode.y &&
-                                 Mathf.Abs(t.x - targetNode.x) > Mathf.Abs(current.x - targetNode.x)) ||
-                                //目标节点在上方的情况
-                                (t.y < targetNode.y &&
-                                 (targetNode.y - t.y) < (targetNode.y - current.y)))
-                            {
-                                current = t;
-                            }
-                        }
-                        //当正方形边长等于1时
-                        else if ((t.x == targetNode.x && t.y == targetNode.y - 1) ||
-                                 (t.y == targetNode.y && current.y == targetNode.y + 1))
-                        {
-                            current = t;
-                        }
-                    }
-                    else current = t;
-
-                    //current = t;
+                    if (startNode != null && processed.Count == 1 && number % 2 == 0)
+                        current = current == transverseNode ? verticalNode : transverseNode;
                 }
+
             }
 
             processed.Add(current);
@@ -122,7 +105,7 @@ public class AStarPathFinding : BaseManager<AStarPathFinding>
                     path.Push(currentPathTile);
                     currentPathTile = currentPathTile.Connection;
                 }
-
+                
                 return path;
             }
 

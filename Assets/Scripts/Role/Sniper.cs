@@ -100,10 +100,10 @@ public class Sniper : Role, IDataPersistence
 
     #region 生命周期
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
         EventCenter.GetInstance()
+            .AddListener<Node, Vector2, float>(EventType.PlayerFoundPartly, SetPlayerNode)
             .AddListener(EventType.DoingMove, Move)
             .AddListener(EventType.RoundEnd, EndCheck)
             .AddListener(EventType.RoundBegin, BeginCheck);
@@ -133,12 +133,6 @@ public class Sniper : Role, IDataPersistence
                                || (direction == RotateDirection.Negative && rotate.z == 180)
             ? rightCircular : leftCircular;
         ChangeState(nowState);
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         
     }
 
@@ -242,7 +236,7 @@ public class Sniper : Role, IDataPersistence
             //广播玩家位置
             else
             {
-                EventCenter.GetInstance().BroadcastEvent(EventType.PlayerFound, PlayerNode);
+                EventCenter.GetInstance().BroadcastEvent<Node,Vector2,float>(EventType.PlayerFoundPartly, playerNow, transform.position, 5f);
                 Debug.Log("broadcast" + playerNext.position);
             }
         }
