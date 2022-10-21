@@ -20,7 +20,7 @@ public class DataPersistenceManager : SingletonMono<DataPersistenceManager>
     {
         base.Awake();
         
-        EventCenter.GetInstance().AddListener(EventType.Save, SaveGame);
+        EventCenter.GetInstance().AddListener(EventType.Extra, SaveGame);
     }
 
     private void Start()
@@ -61,9 +61,8 @@ public class DataPersistenceManager : SingletonMono<DataPersistenceManager>
         }
     }
 
-    public void SaveGame()
+    private void SaveGame()
     {
-
         if (Physics2D.OverlapCircle(transform.position, scanRadius, 1 << 6))
         {
             // pass the data to other scripts so they can update it
@@ -75,8 +74,6 @@ public class DataPersistenceManager : SingletonMono<DataPersistenceManager>
             // save that data to a file using the data handler
             dataHandler.Save(gameData);
         }
-
-        StartCoroutine(MovementCtrl.GetInstance().NextRoundState());
     }
 
     private List<IDataPersistence> FindAllDataPersistenceObjects() 

@@ -213,7 +213,7 @@ public class Player : Role, IDataPersistence
             {
                 nextNode = tempNode;
                 RoundStart = false;
-                StartCoroutine(MovementCtrl.GetInstance().NextRoundState());
+                StartCoroutine(RoundCtrl.GetInstance().NextRoundState(null));
             }
             else
             {
@@ -236,7 +236,7 @@ public class Player : Role, IDataPersistence
         CancelInstructions();
 
         fatherTrans.DOMove(nextNode.position, moveTime);
-        StartCoroutine(MovementCtrl.GetInstance().NextRoundState());
+        StartCoroutine(RoundCtrl.GetInstance().NextRoundState(null));
         
     }
 
@@ -254,7 +254,7 @@ public class Player : Role, IDataPersistence
             ChangeState(nowState);
         }
     
-        StartCoroutine(MovementCtrl.GetInstance().NextRoundState());
+        StartCoroutine(RoundCtrl.GetInstance().NextRoundState(NodePosition));
     }
 
     /// <summary>

@@ -19,6 +19,13 @@ public class Scout : Role, IDataPersistence
         id = Guid.NewGuid().ToString();
     }
 
+    [SerializeField] private SpriteRenderer UpInstruction;
+    [SerializeField] private SpriteRenderer LeftInstruction;
+    [SerializeField] private SpriteRenderer DownInstruction;
+    [SerializeField] private SpriteRenderer RightInstruction;
+
+    private SpriteRenderer nowInstruction;
+
     #region 属性
 
     private Stack<Node> _path = null;
@@ -58,6 +65,7 @@ public class Scout : Role, IDataPersistence
     private static readonly int IsIdle = Animator.StringToHash("IsIdle");
     private static readonly int IsMove = Animator.StringToHash("IsMove");
     private static readonly int Detect = Animator.StringToHash("Detect");
+    private static readonly int Color1 = Shader.PropertyToID("_Color");
 
     /// <summary>
     /// 改变行动状态，同时播放动画
@@ -138,10 +146,11 @@ public class Scout : Role, IDataPersistence
         if (_nextNode == null) return;
         
         ChangeState(States.IsMove);
+        nowInstruction.color = Color.clear;
         //开始移动
         NodePosition.number = 0;
         
-        transform.DOMove(_nextNode.position + SetCoincidencePos(), moveTime).OnComplete(delegate { ChangeState(States.IsIdle); });
+        transform.DOMove(_nextNode.position + SetCoincidencePos(), moveTime).OnComplete(delegate{ ChangeState(States.IsIdle); });
         NodePosition = _nextNode; 
         _path = AStarPathFinding.GetInstance().FindPath(NodePosition, PlayerNode, number);
                    
@@ -159,6 +168,13 @@ public class Scout : Role, IDataPersistence
             //获取移动方向
             _path?.TryPop(out _nextNode);
             _nextNode = _nextNode ?? NodePosition;
+
+            if (_nextNode.x > NodePosition.x) nowInstruction = RightInstruction;
+            else if (_nextNode.x < NodePosition.x) nowInstruction = LeftInstruction;
+            else if (_nextNode.y > NodePosition.y) nowInstruction = UpInstruction;
+            else if (_nextNode.y < NodePosition.y) nowInstruction = DownInstruction;
+            nowInstruction.color = Color.white;
+            
             number = ++_nextNode.number;
         }
     }
@@ -168,7 +184,7 @@ public class Scout : Role, IDataPersistence
     /// </summary>
     private void EndCheck()
     {
-        if (MovementCtrl.GetInstance().RoundNum % 2 == 0)
+        if (RoundCtrl.GetInstance().RoundNum % 2 == 0)
         {
                ChangeState(States.Detect);
                var col = Physics2D.OverlapCircle(transform.position, scanRadius, 1 << 6);
