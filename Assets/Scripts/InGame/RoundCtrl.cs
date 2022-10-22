@@ -49,7 +49,7 @@ public class RoundCtrl: SingletonMono<RoundCtrl>, IDataPersistence
                 break;
             case RoundState.Extra:
                 yield return roundEnd;
-                EventCenter.GetInstance().BroadcastEvent<Node>(EventType.Extra, playerNode);
+                EventCenter.GetInstance().BroadcastEvent<Vector2>(EventType.Extra, playerNode.position);
                 break;
         }
     }
