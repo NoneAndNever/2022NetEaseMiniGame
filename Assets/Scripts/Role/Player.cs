@@ -262,8 +262,11 @@ public class Player : Role, IDataPersistence
     /// </summary>
     private void BeginCheck()
     {
-        CheckInstructions();
-        RoundStart = true;
+        if (nowState != States.Die)
+        {
+            CheckInstructions();
+            RoundStart = true;
+        }
     }
 
     public void LoadData(GameData data)

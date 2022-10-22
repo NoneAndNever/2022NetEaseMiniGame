@@ -148,12 +148,12 @@ public class Scout : Role, IDataPersistence
         ChangeState(States.IsMove);
         nowInstruction.color = Color.clear;
         //开始移动
+        number = ++_nextNode.number;
         NodePosition.number = 0;
         
         transform.DOMove(_nextNode.position + SetCoincidencePos(), moveTime).OnComplete(delegate{ ChangeState(States.IsIdle); });
         NodePosition = _nextNode; 
         _path = AStarPathFinding.GetInstance().FindPath(NodePosition, PlayerNode, number);
-                   
         
     }
 
@@ -175,7 +175,6 @@ public class Scout : Role, IDataPersistence
             else if (_nextNode.y < NodePosition.y) nowInstruction = DownInstruction;
             nowInstruction.color = Color.white;
             
-            number = ++_nextNode.number;
         }
     }
     
@@ -213,17 +212,22 @@ public class Scout : Role, IDataPersistence
 
     public void LoadData(GameData data)
     {
+        NodePosition.number = 0;
+        
         //侦察兵的节点
         data.scoutNodePosition.TryGetValue(id, out var pos);
         transform.position = pos;
         NodePosition = AStarPathFinding.GetInstance().GetGraphNode((int)pos.x, (int)pos.y);
+        
         //目标节点
         data.scoutTargetPosition.TryGetValue(id, out pos);
         PlayerNode = AStarPathFinding.GetInstance().GetGraphNode((int)pos.x, (int)pos.y);
-
+        
         data.scoutNumber.TryGetValue(id, out number);
         NodePosition.number = NodePosition.number < number ? number : NodePosition.number;
-        _path = AStarPathFinding.GetInstance().FindPath(NodePosition, PlayerNode, NodePosition.number--);
+        _path = AStarPathFinding.GetInstance().FindPath(NodePosition, PlayerNode, number);
+        
+        BeginCheck();
     }
 
     public void SaveData(GameData data)
