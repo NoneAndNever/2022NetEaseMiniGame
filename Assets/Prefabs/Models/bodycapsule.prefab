@@ -47,7 +47,6 @@ GameObject:
   - component: {fileID: 1874746774414373744}
   - component: {fileID: 5880632033928274045}
   - component: {fileID: 3795434964076850859}
-  - component: {fileID: 1248799335216757310}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -120,20 +119,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &1248799335216757310
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1566429577864069737}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2527625888094300173
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,7 +130,6 @@ GameObject:
   - component: {fileID: 3791449920371746893}
   - component: {fileID: 7723037600862519791}
   - component: {fileID: 5287143746553319135}
-  - component: {fileID: 2267663198749072275}
   m_Layer: 0
   m_Name: Capsule (2)
   m_TagString: Untagged
@@ -218,20 +202,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2267663198749072275
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2527625888094300173}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3560546283786086834
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,12 +243,12 @@ Light:
   m_GameObject: {fileID: 3560546283786086834}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 0
+  m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.19452351, g: 0.54655546, b: 0.745283, a: 1}
   m_Intensity: 3
-  m_Range: 1.5875089
-  m_SpotAngle: 88.84354
+  m_Range: 3
+  m_SpotAngle: 164.55952
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
@@ -315,7 +285,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -337,7 +307,6 @@ GameObject:
   - component: {fileID: 8148547472126883545}
   - component: {fileID: 1631049149931581528}
   - component: {fileID: 3654172981405246214}
-  - component: {fileID: 5433630713329112669}
   m_Layer: 0
   m_Name: Capsule (1)
   m_TagString: Untagged
@@ -410,20 +379,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5433630713329112669
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4905172996760397764}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &940526589321052682
 PrefabInstance:
   m_ObjectHideFlags: 0
