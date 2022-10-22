@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UIElements;
 
 /// <summary>
 /// 巡逻兵
@@ -11,12 +12,19 @@ using DG.Tweening;
 public class Scout : Role, IDataPersistence
 {
     [SerializeField] private string id;
-
+    private float offsetRadius=0.5f;
     [ContextMenu("Generate guid for id")]
     private void GenerateGuid() 
     {
         id = Guid.NewGuid().ToString();
     }
+
+    [SerializeField] private SpriteRenderer UpInstruction;
+    [SerializeField] private SpriteRenderer LeftInstruction;
+    [SerializeField] private SpriteRenderer DownInstruction;
+    [SerializeField] private SpriteRenderer RightInstruction;
+
+    private SpriteRenderer nowInstruction;
 
     #region 属性
 
@@ -24,7 +32,22 @@ public class Scout : Role, IDataPersistence
     private Node _nextNode = null;
     private static float scanRadius = 1.514f;
     private Node _tamp;
+    private int number;
     
+    #endregion
+
+    #region 重合时的位置
+
+    private Vector2 SetCoincidencePos()
+    {
+        if(_nextNode.number == 1) return Vector2.zero;
+        float rad = Mathf.Deg2Rad * (number * 360 / _nextNode.number);
+        Vector2 degVec = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad))*offsetRadius;
+        Debug.Log(degVec);
+        return degVec;
+
+    }
+
     #endregion
 
     #region 行动状态
@@ -42,6 +65,7 @@ public class Scout : Role, IDataPersistence
     private static readonly int IsIdle = Animator.StringToHash("IsIdle");
     private static readonly int IsMove = Animator.StringToHash("IsMove");
     private static readonly int Detect = Animator.StringToHash("Detect");
+    private static readonly int Color1 = Shader.PropertyToID("_Color");
 
     /// <summary>
     /// 改变行动状态，同时播放动画
@@ -74,14 +98,15 @@ public class Scout : Role, IDataPersistence
 
     #region 生命周期
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
         EventCenter.GetInstance()
             .AddListener<Node>(EventType.PlayerFound, SetPlayerNode)
             .AddListener<Node, Vector2, float>(EventType.PlayerFoundPartly, SetPlayerNode)
             .AddListener(EventType.DoingMove, Move)
+            .AddListener(EventType.RoundBegin, BeginCheck)
             .AddListener(EventType.RoundEnd, EndCheck);
+        id = Guid.NewGuid().ToString();
     }
 
     private void OnDisable()
@@ -98,7 +123,8 @@ public class Scout : Role, IDataPersistence
     {
         var position = transform.position;
         NodePosition = AStarPathFinding.GetInstance().GetGraphNode((int)position.x, (int)position.y);
-        _tamp = PlayerNode;
+        number = ++NodePosition.number;
+        //_tamp = PlayerNode;
         ChangeState(States.IsIdle);
 
         PlayerNode = NodePosition;
@@ -108,7 +134,7 @@ public class Scout : Role, IDataPersistence
     {
         if (_tamp != PlayerNode)
         {
-            _path = AStarPathFinding.GetInstance().FindPath(NodePosition, PlayerNode, false);
+            _path = AStarPathFinding.GetInstance().FindPath(NodePosition, PlayerNode, number);
             _tamp = PlayerNode;
         }
     }
@@ -117,34 +143,54 @@ public class Scout : Role, IDataPersistence
     
     public override void Move()
     {
-        if (_path == null) return;
+        if (_nextNode == null) return;
         
         ChangeState(States.IsMove);
-        //获取移动方向
-        _path?.TryPop(out _nextNode);
+        nowInstruction.color = Color.clear;
         //开始移动
-        _nextNode = _nextNode ?? NodePosition;
-        NodePosition = _nextNode;
-        transform.DOMove(NodePosition.position, moveTime).OnComplete(delegate {ChangeState(States.IsIdle); });
-            
-        _path = AStarPathFinding.GetInstance().FindPath(NodePosition, PlayerNode, false);
+        NodePosition.number = 0;
+        
+        transform.DOMove(_nextNode.position + SetCoincidencePos(), moveTime).OnComplete(delegate{ ChangeState(States.IsIdle); });
+        NodePosition = _nextNode; 
+        _path = AStarPathFinding.GetInstance().FindPath(NodePosition, PlayerNode, number);
+                   
+        
     }
 
     #region 回合检测与碰撞体检测
+
+
+    private void BeginCheck()
+    {
+        if (_path == null) _nextNode = null;
+        else
+        {
+            //获取移动方向
+            _path?.TryPop(out _nextNode);
+            _nextNode = _nextNode ?? NodePosition;
+
+            if (_nextNode.x > NodePosition.x) nowInstruction = RightInstruction;
+            else if (_nextNode.x < NodePosition.x) nowInstruction = LeftInstruction;
+            else if (_nextNode.y > NodePosition.y) nowInstruction = UpInstruction;
+            else if (_nextNode.y < NodePosition.y) nowInstruction = DownInstruction;
+            nowInstruction.color = Color.white;
+            
+            number = ++_nextNode.number;
+        }
+    }
     
     /// <summary>
     /// 回合末检查
     /// </summary>
     private void EndCheck()
     {
-        if (MovementCtrl.GetInstance().RoundNum % 2 == 0)
+        if (RoundCtrl.GetInstance().RoundNum % 2 == 0)
         {
                ChangeState(States.Detect);
                var col = Physics2D.OverlapCircle(transform.position, scanRadius, 1 << 6);
-               if (col)
-               {
-                   PlayerNode = col.GetComponent<Player>().NodePosition;
-               }     
+               if (!col) return;
+               PlayerNode = col.GetComponent<Player>().NodePosition;
+               _path = AStarPathFinding.GetInstance().FindPath(NodePosition, PlayerNode, number);
         }
 
     }
@@ -155,7 +201,6 @@ public class Scout : Role, IDataPersistence
     /// <param name="col"></param>
     private void OnTriggerEnter2D(Collider2D col)
     {
-        //TODO 玩家死亡
         if (col.CompareTag("Player"))
         {
             col.GetComponent<Player>().ChangeState(Player.States.Die);
@@ -175,7 +220,10 @@ public class Scout : Role, IDataPersistence
         //目标节点
         data.scoutTargetPosition.TryGetValue(id, out pos);
         PlayerNode = AStarPathFinding.GetInstance().GetGraphNode((int)pos.x, (int)pos.y);
-        _path = AStarPathFinding.GetInstance().FindPath(NodePosition, PlayerNode, false);
+
+        data.scoutNumber.TryGetValue(id, out number);
+        NodePosition.number = NodePosition.number < number ? number : NodePosition.number;
+        _path = AStarPathFinding.GetInstance().FindPath(NodePosition, PlayerNode, NodePosition.number--);
     }
 
     public void SaveData(GameData data)
@@ -191,5 +239,13 @@ public class Scout : Role, IDataPersistence
             data.scoutTargetPosition.Remove(id);
         }
         data.scoutTargetPosition.Add(id, PlayerNode.position);
+
+        if (data.scoutNumber.ContainsKey(id))
+        {
+            data.scoutNumber.Remove(id);
+        }
+        data.scoutNumber.Add(id, number);
     }
+    
+    
 }

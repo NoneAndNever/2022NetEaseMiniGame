@@ -147,9 +147,8 @@ public class Player : Role, IDataPersistence
 
     #region 生命周期
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
         EventCenter.GetInstance().AddListener(EventType.DoingMove, Move)
             .AddListener(EventType.RoundBegin, BeginCheck)
             .AddListener(EventType.RoundEnd, EndCheck);
@@ -214,7 +213,7 @@ public class Player : Role, IDataPersistence
             {
                 nextNode = tempNode;
                 RoundStart = false;
-                StartCoroutine(MovementCtrl.GetInstance().NextRoundState());
+                StartCoroutine(RoundCtrl.GetInstance().NextRoundState(null));
             }
             else
             {
@@ -237,7 +236,7 @@ public class Player : Role, IDataPersistence
         CancelInstructions();
 
         fatherTrans.DOMove(nextNode.position, moveTime);
-        StartCoroutine(MovementCtrl.GetInstance().NextRoundState());
+        StartCoroutine(RoundCtrl.GetInstance().NextRoundState(null));
         
     }
 
@@ -255,7 +254,7 @@ public class Player : Role, IDataPersistence
             ChangeState(nowState);
         }
     
-        StartCoroutine(MovementCtrl.GetInstance().NextRoundState());
+        StartCoroutine(RoundCtrl.GetInstance().NextRoundState(NodePosition));
     }
 
     /// <summary>
