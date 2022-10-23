@@ -17,6 +17,8 @@ public class RoundCtrl: SingletonMono<RoundCtrl>, IDataPersistence
     private WaitForSeconds inRound = new WaitForSeconds(0.4f);
     private readonly WaitForSeconds inSave = new WaitForSeconds(0.1f);
 
+    private Player player;
+
     public enum RoundState
     {
         RoundBegin,
@@ -27,10 +29,16 @@ public class RoundCtrl: SingletonMono<RoundCtrl>, IDataPersistence
 
     private RoundState nowRoundState = RoundState.RoundBegin;
 
+    private void Start()
+    {
+        player = GameObject.Find("Role").GetComponent<Player>();
+    }
+
     //private readonly EventCenter EventCenter = EventCenter.GetInstance();//广播事件管理器
 
     public IEnumerator NextRoundState([CanBeNull] Node playerNode)
     {
+        if (player.IsDead) yield break;
         nowRoundState = (RoundState)(((int)nowRoundState + 1) % 4);
         switch (nowRoundState)
         {
