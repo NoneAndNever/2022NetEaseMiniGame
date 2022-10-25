@@ -107,6 +107,7 @@ public class Sniper : Role, IDataPersistence
             .AddListener(EventType.DoingMove, Move)
             .AddListener(EventType.RoundEnd, EndCheck)
             .AddListener(EventType.RoundBegin, BeginCheck);
+        id = Guid.NewGuid().ToString();
     }
 
 

@@ -99,6 +99,7 @@ public class Player : Role, IDataPersistence
     }
 
     private States nowState = States.IsIdle;
+    public bool IsDead => nowState == States.Die ? true : false;
     
     private static readonly int IsIdle = Animator.StringToHash("IsIdle");
     private static readonly int IsMove = Animator.StringToHash("IsMove");
@@ -141,7 +142,6 @@ public class Player : Role, IDataPersistence
                 throw new ArgumentOutOfRangeException(nameof(state), state, null);
         }
     }
-
 
     #endregion
 
@@ -262,8 +262,11 @@ public class Player : Role, IDataPersistence
     /// </summary>
     private void BeginCheck()
     {
-        CheckInstructions();
-        RoundStart = true;
+        if (nowState != States.Die)
+        {
+            CheckInstructions();
+            RoundStart = true;
+        }
     }
 
     public void LoadData(GameData data)

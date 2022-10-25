@@ -20,7 +20,7 @@ public class DataPersistenceManager : SingletonMono<DataPersistenceManager>
     {
         base.Awake();
         
-        EventCenter.GetInstance().AddListener(EventType.Extra, SaveGame);
+        //EventCenter.GetInstance().AddListener(EventType.Extra, SaveGame);
     }
 
     private void Start()
