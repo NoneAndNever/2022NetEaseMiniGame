@@ -34,7 +34,7 @@ public class Scout : Role, IDataPersistence
 
     private Stack<Node> _path = null;
     private Node _nextNode = null;
-    private static float scanRadius = 1.514f;
+    private static float scanRadius = 1.614f;
     private Node _tamp;
     private int number;
     
@@ -223,7 +223,7 @@ public class Scout : Role, IDataPersistence
         
         //侦察兵的节点
         data.scoutNodePosition.TryGetValue(id, out var pos);
-        transform.position = pos;
+        fatherTrans.position = pos;
         NodePosition = AStarPathFinding.GetInstance().GetGraphNode((int)pos.x, (int)pos.y);
         
         //目标节点

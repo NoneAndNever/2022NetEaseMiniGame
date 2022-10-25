@@ -114,9 +114,6 @@ public class Sniper : Role, IDataPersistence
     // Start is called before the first frame update
     void Start()
     {
-        rotate = rangeInstruction.eulerAngles;
-        rotate.z = (int)initialAngel;
-        rangeInstruction.eulerAngles = rotate;
 
         var position = transform.position;
         NodePosition = AStarPathFinding.GetInstance().GetGraphNode((int)position.x, (int)position.y);
@@ -133,6 +130,11 @@ public class Sniper : Role, IDataPersistence
                                || (direction == RotateDirection.Positive && rotate.z == 0)
                                || (direction == RotateDirection.Negative && rotate.z == 180)
             ? rightCircular : leftCircular;
+        
+        rotate = rangeInstruction.eulerAngles;
+        rotate.z = (int)initialAngel;
+        rangeInstruction.eulerAngles = rotate;
+        
         ChangeState(nowState);
         
     }
