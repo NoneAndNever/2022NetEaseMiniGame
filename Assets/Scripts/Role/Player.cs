@@ -11,7 +11,7 @@ public class Player : Role, IDataPersistence
 {
     [SerializeField] private Transform fatherTrans;//父物体
     private readonly Vector3 turnLeft = new Vector3(45, 180, 0);
-    private readonly Vector3 turnRight = new Vector3(45, 0, 0);
+    private readonly Vector3 turnRight = new Vector3(-45, 0, 0);
     private Node rebornNode;
 
     private bool RoundStart = true;
@@ -123,7 +123,7 @@ public class Player : Role, IDataPersistence
             case States.IsIdle:
                 _animator.SetBool(IsIdle, true);
                 _animator.SetBool(IsMove, false);
-                nowState = nowState;
+                nowState = States.IsIdle;
                 break;
             case States.IsMove:
                 _animator.SetBool(IsMove, true);

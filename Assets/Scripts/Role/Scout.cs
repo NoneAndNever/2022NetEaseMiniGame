@@ -18,6 +18,10 @@ public class Scout : Role, IDataPersistence
     {
         id = Guid.NewGuid().ToString();
     }
+    
+    [SerializeField] private Transform fatherTrans;//父物体
+    private readonly Vector3 turnLeft = new Vector3(45, 180, 0);
+    private readonly Vector3 turnRight = new Vector3(-45, 0, 0);
 
     [SerializeField] private SpriteRenderer UpInstruction;
     [SerializeField] private SpriteRenderer LeftInstruction;
@@ -147,10 +151,13 @@ public class Scout : Role, IDataPersistence
         
         ChangeState(States.IsMove);
         nowInstruction.color = Color.clear;
+        
         //开始移动
+        if (_nextNode.x > NodePosition.x) transform.localEulerAngles = turnRight;
+        else if (_nextNode.x < NodePosition.x) transform.localEulerAngles = turnLeft;
         NodePosition.number = 0;
         
-        transform.DOMove(_nextNode.position + SetCoincidencePos(), moveTime).OnComplete(delegate{ ChangeState(States.IsIdle); });
+        fatherTrans.DOMove(_nextNode.position + SetCoincidencePos(), moveTime).OnComplete(delegate{ ChangeState(States.IsIdle); });
         NodePosition = _nextNode; 
         _path = AStarPathFinding.GetInstance().FindPath(NodePosition, PlayerNode, number);
                    
