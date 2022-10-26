@@ -41,7 +41,13 @@ public class GameCtrl : MonoBehaviour
             case EventBehaviour.InteractableObj:
                 break;
             case EventBehaviour.NextLevel:
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                int sceneNum = SceneManager.GetActiveScene().buildIndex + 1;
+                SceneManager.LoadScene(sceneNum);
+                EventCenter.GetInstance().BroadcastEvent<int>(EventType.ChangeMusic, sceneNum);
+                break;
+            case EventBehaviour.SaveGame:
+                DataPersistenceManager.GetInstance().SaveGame();
+                StartCoroutine(RoundCtrl.GetInstance().NextRoundState(null));
                 break;
         }
         keyList.RemoveAt(index);
@@ -73,7 +79,8 @@ public enum EventBehaviour
 {
     Dial,
     InteractableObj,
-    NextLevel
+    NextLevel,
+    SaveGame
 }
 
 [System.Serializable]

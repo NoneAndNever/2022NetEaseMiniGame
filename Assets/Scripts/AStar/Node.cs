@@ -63,10 +63,6 @@ public class Node
     /// </summary>
     private bool CheckObstacle(Node other)
     {
-        bool debugFlag = false;
-        if (position.x == 11 && position.y == 5 && other.x == 11 && other.y == 4)
-            debugFlag = true;
-
         Vector2 direction = other.position - position;
         return  Physics2D.Raycast(position, direction, 1f, 1<<8);
     }

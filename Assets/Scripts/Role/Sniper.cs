@@ -100,7 +100,7 @@ public class Sniper : Role, IDataPersistence
 
     #region 生命周期
 
-    private void Awake()
+    private void OnEnable()
     {
         EventCenter.GetInstance()
             .AddListener<Node, Vector2, float>(EventType.PlayerFoundPartly, SetPlayerNode)
@@ -289,7 +289,7 @@ public class Sniper : Role, IDataPersistence
             
             data.sniperAlive.Remove(id);
         }
-        data.sniperAlive.Add(id, nowState != States.Die);
+        data.sniperAlive.Add(id, this.gameObject.activeSelf);
 
         if (data.sniperRotate.ContainsKey(id))
         {
