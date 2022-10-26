@@ -5,7 +5,9 @@ using UnityEngine;
 public class Test : MonoBehaviour
 {
     public GameObject other;
-    
+
+    [SerializeField] private SerializableDictionary<string, int> testDictionary;
+
     // Start is called before the first frame update
     void Start()
     {
