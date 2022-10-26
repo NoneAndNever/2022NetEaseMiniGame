@@ -23,12 +23,12 @@ public class Scout : Role, IDataPersistence
     private readonly Vector3 turnLeft = new Vector3(45, 180, 0);
     private readonly Vector3 turnRight = new Vector3(-45, 0, 0);
 
-    [SerializeField] private SpriteRenderer UpInstruction;
-    [SerializeField] private SpriteRenderer LeftInstruction;
-    [SerializeField] private SpriteRenderer DownInstruction;
-    [SerializeField] private SpriteRenderer RightInstruction;
+    [SerializeField] private GameObject UpInstruction;
+    [SerializeField] private GameObject LeftInstruction;
+    [SerializeField] private GameObject DownInstruction;
+    [SerializeField] private GameObject RightInstruction;
 
-    private SpriteRenderer nowInstruction;
+    private GameObject nowInstruction;
 
     #region 属性
 
@@ -150,7 +150,7 @@ public class Scout : Role, IDataPersistence
         if (_nextNode == null) return;
         
         ChangeState(States.IsMove);
-        nowInstruction.color = Color.clear;
+        nowInstruction.SetActive(false);
         
         //开始移动
         if (_nextNode.x > NodePosition.x) transform.localEulerAngles = turnRight;
@@ -180,7 +180,7 @@ public class Scout : Role, IDataPersistence
             else if (_nextNode.x < NodePosition.x) nowInstruction = LeftInstruction;
             else if (_nextNode.y > NodePosition.y) nowInstruction = UpInstruction;
             else if (_nextNode.y < NodePosition.y) nowInstruction = DownInstruction;
-            nowInstruction.color = Color.white;
+            nowInstruction.SetActive(true);
             
         }
     }
