@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 玩家
@@ -13,6 +14,14 @@ public class Player : Role, IDataPersistence
     private readonly Vector3 turnLeft = new Vector3(45, 180, 0);
     private readonly Vector3 turnRight = new Vector3(-45, 0, 0);
     private Node rebornNode;
+
+    [SerializeField] private GameObject Cosette;
+    [SerializeField] private Color cosetteColor;
+    [SerializeField] private Color eveColor;
+    [SerializeField] private GameObject Eve;
+    [SerializeField] private Animator eveAnimator;
+    [SerializeField] private Animator cosetteAnimator;
+    private Animator nowAnimator;
 
     private bool RoundStart = true;
     
@@ -58,6 +67,7 @@ public class Player : Role, IDataPersistence
 
     private Dictionary<Direction, SpriteRenderer> instructionSprites = new Dictionary<Direction, SpriteRenderer>();//每个指示的精灵
 
+    
     /// <summary>
     /// 检测是否有被阻挡的节点，有则对应方向的指示取消激活
     /// </summary>
@@ -90,6 +100,7 @@ public class Player : Role, IDataPersistence
             instructionSprites[direction].sprite = direction == confirmDirction ? confirmInstruction : normalInstruction;
     }
 
+
     #endregion
     
     #region 行动状态
@@ -119,28 +130,31 @@ public class Player : Role, IDataPersistence
     /// <exception cref="ArgumentOutOfRangeException"></exception>
     public void ChangeState(States state)
     {
+        if (nowAnimator == null)
+            nowAnimator = Cosette.activeSelf ? cosetteAnimator : eveAnimator;
+        
         switch (state)
         {
             case States.IsIdle:
-                _animator.SetBool(IsIdle, true);
-                _animator.SetBool(IsMove, false);
+                nowAnimator.SetBool(IsIdle, true);
+                nowAnimator.SetBool(IsMove, false);
                 nowState = States.IsIdle;
                 break;
             case States.IsMove:
-                _animator.SetBool(IsMove, true);
-                _animator.SetBool(IsIdle, false);
+                nowAnimator.SetBool(IsMove, true);
+                nowAnimator.SetBool(IsIdle, false);
                 nowState = States.IsMove;
                 break;
             case States.Vigilant:
-                _animator.SetTrigger(Vigilant);
+                nowAnimator.SetTrigger(Vigilant);
                 break;
             case States.Attack:
-                _animator.SetTrigger(Attack);
+                nowAnimator.SetTrigger(Attack);
                 break;
             case States.Die:
-                _animator.SetBool(IsIdle, false);
-                _animator.SetBool(IsMove, false);
-                _animator.SetTrigger(Die);
+                nowAnimator.SetBool(IsIdle, false);
+                nowAnimator.SetBool(IsMove, false);
+                nowAnimator.SetTrigger(Die);
                 nowState = States.Die;
                 break;
             default:
@@ -154,6 +168,8 @@ public class Player : Role, IDataPersistence
 
     private void Awake()
     {
+        nowAnimator = Cosette.activeSelf ? cosetteAnimator : eveAnimator;
+        
         EventCenter.GetInstance().AddListener(EventType.DoingMove, Move)
             .AddListener(EventType.RoundBegin, BeginCheck)
             .AddListener(EventType.RoundEnd, EndCheck);
@@ -233,7 +249,7 @@ public class Player : Role, IDataPersistence
     /// </summary>
     public override void Move()
     {
-        if (selectedDirection == Direction.Left) transform.localEulerAngles = turnLeft;
+          if (selectedDirection == Direction.Left) transform.localEulerAngles = turnLeft;
         else if (selectedDirection == Direction.Right) transform.localEulerAngles = turnRight;
         
         nowState = States.IsMove;
@@ -278,6 +294,20 @@ public class Player : Role, IDataPersistence
     {
         NodePosition = AStarPathFinding.GetInstance().GetGraphNode((int)data.PlayerNode.x, (int)data.PlayerNode.y);
         fatherTrans.position = NodePosition.position;
+
+        if (Cosette.activeSelf)
+        {
+            Eve.SetActive(true);
+            Cosette.SetActive(false);
+        }
+        else
+        {
+            Eve.SetActive(false);
+            Cosette.SetActive(true);
+        }
+
+        nowAnimator = nowAnimator == cosetteAnimator ? eveAnimator : cosetteAnimator;
+
         nowState = States.IsIdle;
         ChangeState(States.IsIdle);
         BeginCheck();
