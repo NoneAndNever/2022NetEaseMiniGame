@@ -48,11 +48,6 @@ public class Node
             fourNeighbors.Add(node);
             node.fourNeighbors.Add(this);
         }
-        else
-        {
-            eightNeighbors.Add(node);
-            node.eightNeighbors.Add(this);
-        }
     }
 
     /// <summary>
@@ -68,7 +63,12 @@ public class Node
     /// </summary>
     private bool CheckObstacle(Node other)
     {
-        return  Physics2D.Raycast(position, (other.position-position), 1f, 1<<8);
+        bool debugFlag = false;
+        if (position.x == 11 && position.y == 5 && other.x == 11 && other.y == 4)
+            debugFlag = true;
+
+        Vector2 direction = other.position - position;
+        return  Physics2D.Raycast(position, direction, 1f, 1<<8);
     }
 
     /// <summary>
@@ -106,5 +106,4 @@ public class Node
     {
         return (foundPosition - position).sqrMagnitude;
     }
-    
 }

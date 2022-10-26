@@ -18,6 +18,10 @@ public class Scout : Role, IDataPersistence
     {
         id = Guid.NewGuid().ToString();
     }
+    
+    [SerializeField] private Transform fatherTrans;//父物体
+    private readonly Vector3 turnLeft = new Vector3(45, 180, 0);
+    private readonly Vector3 turnRight = new Vector3(-45, 0, 0);
 
     [SerializeField] private SpriteRenderer UpInstruction;
     [SerializeField] private SpriteRenderer LeftInstruction;
@@ -30,7 +34,7 @@ public class Scout : Role, IDataPersistence
 
     private Stack<Node> _path = null;
     private Node _nextNode = null;
-    private static float scanRadius = 1.514f;
+    private static float scanRadius = 1.614f;
     private Node _tamp;
     private int number;
     
@@ -147,11 +151,14 @@ public class Scout : Role, IDataPersistence
         
         ChangeState(States.IsMove);
         nowInstruction.color = Color.clear;
+        
         //开始移动
+        if (_nextNode.x > NodePosition.x) transform.localEulerAngles = turnRight;
+        else if (_nextNode.x < NodePosition.x) transform.localEulerAngles = turnLeft;
         number = ++_nextNode.number;
         NodePosition.number = 0;
         
-        transform.DOMove(_nextNode.position + SetCoincidencePos(), moveTime).OnComplete(delegate{ ChangeState(States.IsIdle); });
+        fatherTrans.DOMove(_nextNode.position + SetCoincidencePos(), moveTime).OnComplete(delegate{ ChangeState(States.IsIdle); });
         NodePosition = _nextNode; 
         _path = AStarPathFinding.GetInstance().FindPath(NodePosition, PlayerNode, number);
         
@@ -216,7 +223,7 @@ public class Scout : Role, IDataPersistence
         
         //侦察兵的节点
         data.scoutNodePosition.TryGetValue(id, out var pos);
-        transform.position = pos;
+        fatherTrans.position = pos;
         NodePosition = AStarPathFinding.GetInstance().GetGraphNode((int)pos.x, (int)pos.y);
         
         //目标节点

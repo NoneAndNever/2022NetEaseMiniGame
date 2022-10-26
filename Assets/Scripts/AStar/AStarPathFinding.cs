@@ -78,8 +78,12 @@ public class AStarPathFinding : BaseManager<AStarPathFinding>
                     
                     transverseNode = Mathf.Abs(targetNode.y - current.y) < Mathf.Abs(targetNode.y - t.y) ? t : current;
                     verticalNode = transverseNode == t ? current : t;
-                    int transverseDifference = Mathf.Abs(transverseNode.x - transverseNode.y);
-                    int verticalDifference = Mathf.Abs(verticalNode.x - verticalNode.y);
+                    // int transverseDifference = Mathf.Abs(Mathf.Abs(transverseNode.x - targetNode.x) -
+                    //                                      Mathf.Abs(transverseNode.y - targetNode.y));
+                    // int verticalDifference = (Mathf.Abs(verticalNode.x - targetNode.x) -
+                    //                           Mathf.Abs(verticalNode.y - targetNode.y));
+                    int transverseDifference = Mathf.Abs(transverseNode.x - targetNode.x);
+                    int verticalDifference = Mathf.Abs(verticalNode.y - targetNode.y);
                     
                     if (transverseDifference != verticalDifference)
                         current = transverseDifference < verticalDifference ? transverseNode : verticalNode;

@@ -10,8 +10,8 @@ using DG.Tweening;
 public class Player : Role, IDataPersistence
 {
     [SerializeField] private Transform fatherTrans;//父物体
-    private readonly Vector3 turnLeft = new Vector3(0, 180, 0);
-    private readonly Vector3 turnRight = Vector3.zero;
+    private readonly Vector3 turnLeft = new Vector3(45, 180, 0);
+    private readonly Vector3 turnRight = new Vector3(-45, 0, 0);
     private Node rebornNode;
 
     private bool RoundStart = true;
@@ -48,6 +48,11 @@ public class Player : Role, IDataPersistence
     [SerializeField] private GameObject rightInstruction;//指示向右
     [SerializeField] private GameObject leftInstruction;//指示向左
 
+    [SerializeField] private GameObject upShadow;//上圈
+    [SerializeField] private GameObject downShadow;//下圈
+    [SerializeField] private GameObject rightShadow;//右圈
+    [SerializeField] private GameObject leftShadow;//左圈
+
     [SerializeField] private Sprite normalInstruction;//默认指示
     [SerializeField] private Sprite confirmInstruction;//确认指示
 
@@ -58,10 +63,10 @@ public class Player : Role, IDataPersistence
     /// </summary>
     private void CheckInstructions()
     {
-        upInstruction.SetActive(!UpNode.isBlocked);
-        downInstruction.SetActive(!DownNode.isBlocked);
-        leftInstruction.SetActive(!LeftNode.isBlocked);
-        rightInstruction.SetActive(!RightNode.isBlocked);
+        upShadow.SetActive(NodePosition.GetValidNeighbors(Node.Direction.Four).Contains(UpNode));
+        downShadow.SetActive(NodePosition.GetValidNeighbors(Node.Direction.Four).Contains(DownNode));
+        leftShadow.SetActive(NodePosition.GetValidNeighbors(Node.Direction.Four).Contains(LeftNode));
+        rightShadow.SetActive(NodePosition.GetValidNeighbors(Node.Direction.Four).Contains(RightNode));
     }
 
     /// <summary>
@@ -69,10 +74,10 @@ public class Player : Role, IDataPersistence
     /// </summary>
     private void CancelInstructions()
     {
-        upInstruction.SetActive(false);
-        downInstruction.SetActive(false);
-        leftInstruction.SetActive(false);
-        rightInstruction.SetActive(false);
+        upShadow.SetActive(false);
+        downShadow.SetActive(false);
+        leftShadow.SetActive(false);
+        rightShadow.SetActive(false);
     }
 
     /// <summary>
@@ -119,7 +124,7 @@ public class Player : Role, IDataPersistence
             case States.IsIdle:
                 _animator.SetBool(IsIdle, true);
                 _animator.SetBool(IsMove, false);
-                nowState = nowState;
+                nowState = States.IsIdle;
                 break;
             case States.IsMove:
                 _animator.SetBool(IsMove, true);
@@ -207,7 +212,7 @@ public class Player : Role, IDataPersistence
             Direction.Center => NodePosition
         };
 
-        if (!tempNode.isBlocked)
+        if (NodePosition.GetValidNeighbors(Node.Direction.Four).Contains(tempNode) || tempNode == NodePosition)
         {
             if (direction == selectedDirection)
             {
