@@ -20,13 +20,15 @@ public class SoundManager : SingletonMono<SoundManager>
     private float volume = 0.25f;
 
     [SerializeField] private AudioClip BGM1, BGM2, BGM3;
-    
-    private void Awake()
+    private AudioClip tempBGM;
+
+    protected override void Awake()
     {
         if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(instance);
+            EventCenter.GetInstance().AddListener<int>(EventType.ChangeMusic, ChangeMusic);
         }
         else Destroy(instance);
 
@@ -37,19 +39,31 @@ public class SoundManager : SingletonMono<SoundManager>
         AudioListener.volume = volume;
     }
 
-    public void ChangeMusic(_soundType soundType)
+    private void ChangeMusic(int sceneNum)
     {
-        if (soundType != selectedBGM)
+        BGM.loop = true;
+        if (sceneNum > 1 && sceneNum < 8)
         {
-            BGM.clip = soundType switch
+            if (sceneNum == 2)
             {
-                _soundType.BGM1 => this.BGM1,
-                _soundType.BGM2 => BGM2,
-                _soundType.BGM3 => BGM3
-            };
-
-            selectedBGM = soundType;
-            BGM.loop = true;
+                BGM.clip = BGM1; 
+                BGM.Play();
+            }
+            else if (sceneNum == 6)
+            {
+                BGM.clip = BGM2; 
+                BGM.Play();
+            }
+            else if (sceneNum == 7)
+            {
+                BGM.clip = BGM3; 
+                BGM.Play();
+            }
+            
+        }
+        else
+        {
+            BGM.clip = null;
             BGM.Play();
         }
     }

@@ -41,7 +41,9 @@ public class GameCtrl : MonoBehaviour
             case EventBehaviour.InteractableObj:
                 break;
             case EventBehaviour.NextLevel:
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                int sceneNum = SceneManager.GetActiveScene().buildIndex + 1;
+                SceneManager.LoadScene(sceneNum);
+                EventCenter.GetInstance().BroadcastEvent<int>(EventType.ChangeMusic, sceneNum);
                 break;
         }
         keyList.RemoveAt(index);
