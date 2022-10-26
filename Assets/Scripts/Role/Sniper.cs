@@ -223,7 +223,6 @@ public class Sniper : Role, IDataPersistence
         
         if (col.CompareTag("Player"))
         {
-            Debug.Log("PlayerEnter");
             Player player = col.GetComponent<Player>();
             Node playerNow = player.NodePosition;
             Node playerNext = player.nextNode;
@@ -240,7 +239,7 @@ public class Sniper : Role, IDataPersistence
             else
             {
                 EventCenter.GetInstance().BroadcastEvent<Node,Vector2,float>(EventType.PlayerFoundPartly, playerNow, transform.position, 5f);
-                Debug.Log("broadcast" + playerNext.position);
+                
             }
         }
     }
