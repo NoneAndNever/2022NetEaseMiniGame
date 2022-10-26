@@ -16,13 +16,6 @@ public class DataPersistenceManager : SingletonMono<DataPersistenceManager>
     private List<IDataPersistence> dataPersistenceObjects;
     private FileDataHandler dataHandler;
 
-    protected override void Awake()
-    {
-        base.Awake();
-        
-        //EventCenter.GetInstance().AddListener(EventType.Extra, SaveGame);
-    }
-
     private void Start()
     {
         dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
@@ -61,19 +54,18 @@ public class DataPersistenceManager : SingletonMono<DataPersistenceManager>
         }
     }
 
-    private void SaveGame()
+    public void SaveGame()
     {
-        if (Physics2D.OverlapCircle(transform.position, scanRadius, 1 << 6))
+        Debug.Log("Save Game");
+        
+        // pass the data to other scripts so they can update it
+        foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
-            // pass the data to other scripts so they can update it
-            foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
-            {
-                dataPersistenceObj.SaveData(gameData);
-            }
-
-            // save that data to a file using the data handler
-            dataHandler.Save(gameData);
+            dataPersistenceObj.SaveData(gameData);
         }
+
+        // save that data to a file using the data handler
+        dataHandler.Save(gameData);
     }
 
     private List<IDataPersistence> FindAllDataPersistenceObjects() 
