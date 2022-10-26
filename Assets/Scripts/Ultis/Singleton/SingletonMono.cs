@@ -8,7 +8,7 @@ using UnityEngine;
 /// <typeparam name="T"></typeparam>
 public class SingletonMono<T> : MonoBehaviour where T : MonoBehaviour
 {
-    private static T instance;
+    protected static T instance;
 
     public static T GetInstance()
     {
