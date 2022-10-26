@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor.Events;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 
 public class GameCtrl : MonoBehaviour
@@ -39,6 +40,9 @@ public class GameCtrl : MonoBehaviour
                 break;
             case EventBehaviour.InteractableObj:
                 break;
+            case EventBehaviour.NextLevel:
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                break;
         }
         keyList.RemoveAt(index);
         eventList.RemoveAt(index);
@@ -68,7 +72,8 @@ public class GameCtrl : MonoBehaviour
 public enum EventBehaviour
 {
     Dial,
-    InteractableObj
+    InteractableObj,
+    NextLevel
 }
 
 [System.Serializable]
