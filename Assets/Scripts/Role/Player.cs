@@ -212,7 +212,7 @@ public class Player : Role, IDataPersistence
             Direction.Center => NodePosition
         };
 
-        if (NodePosition.GetValidNeighbors(Node.Direction.Four).Contains(tempNode))
+        if (NodePosition.GetValidNeighbors(Node.Direction.Four).Contains(tempNode) || tempNode == NodePosition)
         {
             if (direction == selectedDirection)
             {

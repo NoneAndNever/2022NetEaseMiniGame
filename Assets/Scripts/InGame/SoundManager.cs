@@ -19,11 +19,16 @@ public class SoundManager : SingletonMono<SoundManager>
 
     private float volume = 0.25f;
 
-    [SerializeField] private AudioClip BGM1, BGM2, BGM3, BGM4;
+    [SerializeField] private AudioClip BGM1, BGM2, BGM3;
     
     private void Awake()
     {
-        
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(instance);
+        }
+        else Destroy(instance);
 
     }
 
@@ -40,8 +45,7 @@ public class SoundManager : SingletonMono<SoundManager>
             {
                 _soundType.BGM1 => this.BGM1,
                 _soundType.BGM2 => BGM2,
-                _soundType.BGM3 => BGM3,
-                _soundType.BGM4 => BGM4
+                _soundType.BGM3 => BGM3
             };
 
             selectedBGM = soundType;
