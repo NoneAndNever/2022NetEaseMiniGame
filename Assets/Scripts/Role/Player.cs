@@ -63,10 +63,10 @@ public class Player : Role, IDataPersistence
     /// </summary>
     private void CheckInstructions()
     {
-        upShadow.SetActive(!UpNode.isBlocked);
-        downShadow.SetActive(!DownNode.isBlocked);
-        leftShadow.SetActive(!LeftNode.isBlocked);
-        rightShadow.SetActive(!RightNode.isBlocked);
+        upShadow.SetActive(NodePosition.GetValidNeighbors(Node.Direction.Four).Contains(UpNode));
+        downShadow.SetActive(NodePosition.GetValidNeighbors(Node.Direction.Four).Contains(DownNode));
+        leftShadow.SetActive(NodePosition.GetValidNeighbors(Node.Direction.Four).Contains(LeftNode));
+        rightShadow.SetActive(NodePosition.GetValidNeighbors(Node.Direction.Four).Contains(RightNode));
     }
 
     /// <summary>
@@ -212,7 +212,7 @@ public class Player : Role, IDataPersistence
             Direction.Center => NodePosition
         };
 
-        if (!tempNode.isBlocked)
+        if (NodePosition.GetValidNeighbors(Node.Direction.Four).Contains(tempNode))
         {
             if (direction == selectedDirection)
             {
