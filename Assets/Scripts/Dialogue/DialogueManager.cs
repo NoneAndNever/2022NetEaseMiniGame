@@ -78,7 +78,8 @@ public class DialogueManager : SingletonMono<DialogueManager>
         if (dialogues[currentLine].person==Dialogue.Person.End)
         {
             ClosePanel();//关闭面板
-            StartCoroutine(RoundCtrl.GetInstance().NextRoundState(null));
+            GameCtrl.GetInstance().CheckEvent(GameCtrl.GetInstance().lastVec);
+            //StartCoroutine(RoundCtrl.GetInstance().NextRoundState(null));
             return;
         }
 
@@ -107,11 +108,12 @@ public class DialogueManager : SingletonMono<DialogueManager>
 
     private void ClosePanel()
     {
-        dialPanel.SetActive(false);
+        
         if (blackPanel)
         {
             blackPanel.SetActive(false);
         }
+        dialPanel.SetActive(false);
     }
 
     private void SwitchPerson(Dialogue.Person person)

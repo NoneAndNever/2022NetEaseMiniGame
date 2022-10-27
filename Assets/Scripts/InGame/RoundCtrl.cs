@@ -27,7 +27,7 @@ public class RoundCtrl: SingletonMono<RoundCtrl>, IDataPersistence
         Extra
     }
 
-    private RoundState nowRoundState = RoundState.RoundBegin;
+    private RoundState nowRoundState = RoundState.Extra;
 
     private void Start()
     {
@@ -38,7 +38,12 @@ public class RoundCtrl: SingletonMono<RoundCtrl>, IDataPersistence
 
     public IEnumerator NextRoundState([CanBeNull] Node playerNode)
     {
+        if (player == null)
+        {
+            player = GameObject.Find("Role").GetComponent<Player>();
+        }
         if (player.IsDead) yield break;
+        
         nowRoundState = (RoundState)(((int)nowRoundState + 1) % 4);
         switch (nowRoundState)
         {
