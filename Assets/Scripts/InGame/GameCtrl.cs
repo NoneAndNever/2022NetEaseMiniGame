@@ -51,6 +51,11 @@ public class GameCtrl : SingletonMono<GameCtrl>
         EventCenter.GetInstance().AddListener<Vector2>(EventType.Extra,CheckEvent);
     }
 
+    private void OnDisable()
+    {
+        EventCenter.GetInstance().RemoveListener<Vector2>(EventType.Extra,CheckEvent);
+    }
+
     public void CheckEvent(Vector2 vec2)
     {
         var index = SearchExist(vec2);

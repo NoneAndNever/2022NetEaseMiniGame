@@ -142,8 +142,10 @@ public class Sniper : Role, IDataPersistence
     private void OnDisable()
     {
         EventCenter.GetInstance()
+            .RemoveListener<Node, Vector2, float>(EventType.PlayerFoundPartly, SetPlayerNode)
             .RemoveListener(EventType.DoingMove, Move)
-            .RemoveListener(EventType.RoundEnd, EndCheck);
+            .RemoveListener(EventType.RoundEnd, EndCheck)
+            .RemoveListener(EventType.RoundBegin, BeginCheck);
     }
 
     #endregion

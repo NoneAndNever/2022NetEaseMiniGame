@@ -24,12 +24,19 @@ public class RoundCtrl: SingletonMono<RoundCtrl>, IDataPersistence
         RoundBegin,
         InTheRound,
         RoundEnd,
-        Extra
+        Extra,
+        SceneBegin
     }
 
-    private RoundState nowRoundState = RoundState.Extra;
+    private RoundState nowRoundState = RoundState.SceneBegin;
+
 
     private void Start()
+    {
+        EventCenter.GetInstance().BroadcastEvent(EventType.SceneBegin);
+    }
+
+    private void OnEnable()
     {
         player = GameObject.Find("Role").GetComponent<Player>();
     }
@@ -38,13 +45,15 @@ public class RoundCtrl: SingletonMono<RoundCtrl>, IDataPersistence
 
     public IEnumerator NextRoundState([CanBeNull] Node playerNode)
     {
-        if (player == null)
+        
+        if (!player)
         {
             player = GameObject.Find("Role").GetComponent<Player>();
         }
         if (player.IsDead) yield break;
-        
-        nowRoundState = (RoundState)(((int)nowRoundState + 1) % 4);
+
+        nowRoundState = nowRoundState == RoundState.SceneBegin ? RoundState.RoundBegin : (RoundState)(((int)nowRoundState + 1) % 4);
+        //nowRoundState = (RoundState)(((int)nowRoundState + 1) % 4);
         switch (nowRoundState)
         {
             case RoundState.RoundBegin:

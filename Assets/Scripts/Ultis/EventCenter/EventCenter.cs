@@ -196,6 +196,11 @@ public class EventCenter: BaseManager<EventCenter>
         }
         return this;
     }
-    
+
+    public EventCenter Clear()
+    {
+        eventTable.Clear();
+        return this;
+    }
 
 }

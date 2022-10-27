@@ -119,6 +119,7 @@ public class Scout : Role, IDataPersistence
             .RemoveListener<Node>(EventType.PlayerFound, SetPlayerNode)
             .RemoveListener<Node, Vector2, float>(EventType.PlayerFoundPartly, SetPlayerNode)
             .RemoveListener(EventType.DoingMove, Move)
+            .RemoveListener(EventType.RoundBegin, BeginCheck)
             .RemoveListener(EventType.RoundEnd, EndCheck);
     }
 
@@ -180,7 +181,7 @@ public class Scout : Role, IDataPersistence
             else if (_nextNode.x < NodePosition.x) nowInstruction = LeftInstruction;
             else if (_nextNode.y > NodePosition.y) nowInstruction = UpInstruction;
             else if (_nextNode.y < NodePosition.y) nowInstruction = DownInstruction;
-            nowInstruction.SetActive(true);
+            if(!nowInstruction) nowInstruction.SetActive(true);
             
         }
     }

@@ -87,8 +87,12 @@ public class DialogueManager : SingletonMono<DialogueManager>
         {
             currentPerson = dialogues[currentLine].person;
             SwitchPerson(currentPerson);
-        } 
-        
+        }
+
+        if (currentCoroutine!=null)
+        {
+            StopCoroutine(currentCoroutine);
+        }
         currentCoroutine = StartCoroutine(WordsTyping(dialogues[currentLine].dialogueText));
         currentLine++;
     }

@@ -23,7 +23,7 @@ public class Player : Role, IDataPersistence
     [SerializeField] private Animator cosetteAnimator;
     private Animator nowAnimator;
 
-    private bool RoundStart = true;
+    private bool RoundStart = false;
     
     #region 节点
 
@@ -190,6 +190,13 @@ public class Player : Role, IDataPersistence
         CheckInstructions();
         
         ChangeState(nowState);
+    }
+
+    private void OnDisable()
+    {
+        EventCenter.GetInstance().RemoveListener(EventType.DoingMove, Move)
+            .RemoveListener(EventType.RoundBegin, BeginCheck)
+            .RemoveListener(EventType.RoundEnd, EndCheck);
     }
 
     // Update is called once per frame

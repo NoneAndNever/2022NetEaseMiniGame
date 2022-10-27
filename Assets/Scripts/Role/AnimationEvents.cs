@@ -18,7 +18,7 @@ public class AnimationEvents : MonoBehaviour
 
     public void ReBorn()
     {
-        /*deadCount++;
+        deadCount++;
         if (deadCount != 2)
         {
             
@@ -27,10 +27,11 @@ public class AnimationEvents : MonoBehaviour
         else
         {
             deadCount = 0;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }*/
+            ReScene.GetInstance().Reload();
+        }
         
-        data.LoadGame();
-        
+        //data.LoadGame();
+        //StartCoroutine(ReScene.GetInstance().ReLoad());
+        //ReScene.GetInstance().Reload();
     }
 }
