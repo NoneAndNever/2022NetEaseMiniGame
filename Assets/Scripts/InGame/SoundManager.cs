@@ -56,17 +56,17 @@ public class SoundManager : SingletonMono<SoundManager>
         BGM.loop = true;
         if (sceneNumber > 1 && sceneNumber < 8)
         {
-            if (sceneNumber == 2)
+            if (sceneNumber == 2 || sceneNumber == 3  || sceneNumber == 4)
             {
                 BGM.clip = BGM1; 
                 BGM.Play();
             }
-            else if (sceneNumber == 6)
+            else if (sceneNumber == 5)
             {
                 BGM.clip = BGM2; 
                 BGM.Play();
             }
-            else if (sceneNumber == 7)
+            else if (sceneNumber == 6)
             {
                 BGM.clip = BGM3; 
                 BGM.Play();
