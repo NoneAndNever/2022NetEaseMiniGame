@@ -181,7 +181,7 @@ public class Scout : Role, IDataPersistence
             else if (_nextNode.x < NodePosition.x) nowInstruction = LeftInstruction;
             else if (_nextNode.y > NodePosition.y) nowInstruction = UpInstruction;
             else if (_nextNode.y < NodePosition.y) nowInstruction = DownInstruction;
-            if(!nowInstruction) nowInstruction.SetActive(true);
+            if(nowInstruction) nowInstruction.SetActive(true);
             
         }
     }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SoundManager : SingletonMono<SoundManager>
 {
@@ -21,17 +22,18 @@ public class SoundManager : SingletonMono<SoundManager>
 
     [SerializeField] private AudioClip BGM1, BGM2, BGM3;
     private AudioClip tempBGM;
-
+    private int sceneNum;
+    private int lastSceneNum;
+    
     protected override void Awake()
     {
         if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(instance);
-            EventCenter.GetInstance().AddListener<int>(EventType.ChangeMusic, ChangeMusic);
+            //EventCenter.GetInstance().AddListener<int>(EventType.ChangeMusic, ChangeMusic);
         }
         else Destroy(instance);
-
     }
 
     private void Start()
@@ -39,22 +41,32 @@ public class SoundManager : SingletonMono<SoundManager>
         AudioListener.volume = volume;
     }
 
-    private void ChangeMusic(int sceneNum)
+    private void Update()
+    {
+           int sceneNum = SceneManager.GetActiveScene().buildIndex;
+        if (lastSceneNum != sceneNum)
+        {
+            lastSceneNum = sceneNum;
+            ChangeMusic(lastSceneNum);
+        }
+    }
+
+    private void ChangeMusic(int sceneNumber)
     {
         BGM.loop = true;
-        if (sceneNum > 1 && sceneNum < 8)
+        if (sceneNumber > 1 && sceneNumber < 8)
         {
-            if (sceneNum == 2)
+            if (sceneNumber == 2)
             {
                 BGM.clip = BGM1; 
                 BGM.Play();
             }
-            else if (sceneNum == 6)
+            else if (sceneNumber == 6)
             {
                 BGM.clip = BGM2; 
                 BGM.Play();
             }
-            else if (sceneNum == 7)
+            else if (sceneNumber == 7)
             {
                 BGM.clip = BGM3; 
                 BGM.Play();

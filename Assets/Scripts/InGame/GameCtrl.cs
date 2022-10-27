@@ -117,7 +117,7 @@ public class GameCtrl : SingletonMono<GameCtrl>
                 {
                     int sceneNum = SceneManager.GetActiveScene().buildIndex + 1;
                     SceneManager.LoadScene(sceneNum);
-                    EventCenter.GetInstance().BroadcastEvent<int>(EventType.ChangeMusic, sceneNum);
+                    //EventCenter.GetInstance().BroadcastEvent<int>(EventType.ChangeMusic, sceneNum);
                 }
                 else 
                     StartCoroutine(RoundCtrl.GetInstance().NextRoundState(null));
