@@ -12,6 +12,7 @@ public class DialogueManager : SingletonMono<DialogueManager>
     [SerializeField] private TextAsset textAsset;//所读取的对话文件
     [SerializeField] private List<Dialogue> dialogues;//对话存储列表
     [SerializeField] private GameObject dialPanel;//UI对话面板
+    [SerializeField] private GameObject blackPanel;//UI对话面板
     [SerializeField] private GameObject eveNameLabel;//eve名字标签
     [SerializeField] private GameObject CosetteNameLabel;//cosette名字标签
     [SerializeField] private Text dialText;//对话框文本
@@ -107,6 +108,10 @@ public class DialogueManager : SingletonMono<DialogueManager>
     private void ClosePanel()
     {
         dialPanel.SetActive(false);
+        if (blackPanel)
+        {
+            blackPanel.SetActive(false);
+        }
     }
 
     private void SwitchPerson(Dialogue.Person person)

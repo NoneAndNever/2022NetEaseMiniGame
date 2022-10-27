@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using UnityEditor.Events;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,7 +12,24 @@ public class GameCtrl : MonoBehaviour
 {
     [SerializeField] private List<Vector2> keyList;
     [SerializeField] private List<EventInfo> eventList;
+    private bool isInUI = false;
+    private GameObject uiCam;
 
+
+    private void Start()
+    {
+        CheckEvent(GameObject.FindWithTag("Player").transform.position);
+    }
+
+    private void Update()
+    {
+        if(!isInUI) return;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            uiCam.SetActive(false);
+            StartCoroutine(RoundCtrl.GetInstance().NextRoundState(null));
+        }
+    }
 
     private void Awake()
     {
@@ -39,6 +57,9 @@ public class GameCtrl : MonoBehaviour
                 TriggerDial(eventList[index].argument);
                 break;
             case EventBehaviour.InteractableObj:
+                isInUI=true;
+                uiCam = eventList[index].obj;
+                uiCam.SetActive(true);
                 break;
             case EventBehaviour.NextLevel:
                 int sceneNum = SceneManager.GetActiveScene().buildIndex + 1;
@@ -88,4 +109,5 @@ public class EventInfo
 {
     public EventBehaviour eventBehaviour;
     public int argument;
+    [AllowNull] public GameObject obj;
 }
