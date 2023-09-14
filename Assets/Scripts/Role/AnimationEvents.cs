@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class AnimationEvents : MonoBehaviour
 {
+    
     [SerializeField] private GameObject role;
     [SerializeField] private DataPersistenceManager data;
     private static int deadCount = 0;

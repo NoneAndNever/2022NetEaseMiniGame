@@ -17,7 +17,8 @@ public class Dialogue
     {
         Eve,
         Cosette,
-        End
+        End,
+        EndNow
     }
     
     public int index;

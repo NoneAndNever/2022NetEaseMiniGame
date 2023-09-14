@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using UnityEditor.Events;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -56,6 +55,8 @@ public class GameCtrl : SingletonMono<GameCtrl>
         EventCenter.GetInstance().RemoveListener<Vector2>(EventType.Extra,CheckEvent);
     }
 
+    
+    
     public void CheckEvent(Vector2 vec2)
     {
         var index = SearchExist(vec2);
@@ -119,8 +120,11 @@ public class GameCtrl : SingletonMono<GameCtrl>
                     SceneManager.LoadScene(sceneNum);
                     //EventCenter.GetInstance().BroadcastEvent<int>(EventType.ChangeMusic, sceneNum);
                 }
-                else 
-                    StartCoroutine(RoundCtrl.GetInstance().NextRoundState(null));
+                else
+                {
+                    TriggerDial(9);
+                    //StartCoroutine(RoundCtrl.GetInstance().NextRoundState(null));
+                }
                 break;
             case EventBehaviour.SaveGame:
                 DataPersistenceManager.GetInstance().SaveGame();
@@ -131,7 +135,7 @@ public class GameCtrl : SingletonMono<GameCtrl>
                 StartCoroutine(RoundCtrl.GetInstance().NextRoundState(null));
                 break;
             case EventBehaviour.GetSignal:
-                isGetSignal = true;
+                
                 break; 
         }
 

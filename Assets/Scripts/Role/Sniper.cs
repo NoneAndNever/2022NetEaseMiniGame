@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Unity.VisualScripting;
-using UnityEditor.Timeline;
+
 using UnityEngine.UIElements;
 
 /// <summary>

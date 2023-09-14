@@ -82,7 +82,12 @@ public class DialogueManager : SingletonMono<DialogueManager>
             //StartCoroutine(RoundCtrl.GetInstance().NextRoundState(null));
             return;
         }
-
+        else if(dialogues[currentLine].person==Dialogue.Person.EndNow)
+        {
+            ClosePanel();//关闭面板
+            StartCoroutine(RoundCtrl.GetInstance().NextRoundState(null));
+            return;
+        }
         if (dialogues[currentLine].person!=currentPerson)
         {
             currentPerson = dialogues[currentLine].person;

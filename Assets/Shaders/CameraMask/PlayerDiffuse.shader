@@ -58,6 +58,7 @@ CGPROGRAM
             o.Alpha = c.a;
         }
 ENDCG
+
     } 
     Fallback "Legacy Shaders/VertexLit"
 }

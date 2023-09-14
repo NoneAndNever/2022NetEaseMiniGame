@@ -182,6 +182,8 @@ MonoBehaviour:
   eventList:
   - eventBehaviour: 0
     argument: 0
+    obj: {fileID: 0}
+  lastVec: {x: 0, y: 0}
 --- !u!1 &234007183
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,7 +402,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &334181094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -513,12 +515,14 @@ MonoBehaviour:
   textAsset: {fileID: 4900000, guid: 92ac9a5d4f9913946ac50f2e4a987c9f, type: 3}
   dialogues: []
   dialPanel: {fileID: 41454675}
+  blackPanel: {fileID: 0}
   eveNameLabel: {fileID: 0}
   CosetteNameLabel: {fileID: 0}
   dialText: {fileID: 1123702227}
   eveImage: {fileID: 0}
   cosetteImage: {fileID: 0}
   currentLine: 0
+  isTyping: 0
 --- !u!1 &395995863
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,7 +1415,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1383082767645729878, guid: 02dbebda93c17b944a752cdbf369f23d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1417500960385039005, guid: 02dbebda93c17b944a752cdbf369f23d, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1760,7 +1764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &755306512
 MonoBehaviour:
   m_ObjectHideFlags: 0
